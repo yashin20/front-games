@@ -315,9 +315,9 @@ function rotateShape() {
         var sx = shapePoint[1] + rotateShape[i][1];
         shapeCell.push([sy, sx]);
     }
-    showShape(); //(회전후)블록 그리기
-
     updateGhost();  // Ghost 블록 업데이트
+    
+    showShape(); //(회전후)블록 그리기
 }
 
 function canRotate() {
