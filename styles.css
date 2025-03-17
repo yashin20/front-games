@@ -1,0 +1,86 @@
+/* 기본 스타일 */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #121212;
+  color: white;
+}
+
+/* 헤더 스타일 */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #1e1e1e;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+
+nav ul li {
+  display: inline;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+/* 메인 배너 */
+.banner {
+  text-align: center;
+  padding: 50px;
+  background-color: #ff5722;
+}
+
+.banner h1 {
+  font-size: 32px;
+}
+
+/* 게임 리스트 */
+.game-list {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.game {
+  background-color: #1e1e1e;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  width: 200px;
+}
+
+.game img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.game h2 {
+  margin: 10px 0;
+}
+
+.game a {
+  text-decoration: none;
+  color: #ff5722;
+  font-weight: bold;
+}
+
+/* 푸터 */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #1e1e1e;
+}
