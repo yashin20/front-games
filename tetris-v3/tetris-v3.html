@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Tetris</title>
+    <link rel="stylesheet" type="text/css" href="tetris-v3.css">
+</head>
+
+<body>
+
+    <div id="gameField">
+        <div id="gameover">
+            <h1>Game Over</h1>
+            <h4>press 'F5' to restart</h4>
+        </div>
+        <div id="pause">
+            <h1>Pause</h1>
+            <h4>press 'F5' to resume</h4>
+        </div>
+
+        <div id="scoreField">
+            <p class="sub">LEVEL</p>
+            <p id="level">1</p>
+            <p class="sub">SCORE</p>
+            <p id="score">0</p>
+            <p class="sub">HELP</p>
+            <p id="help">move : ←↓→</p>
+            <p id="help">hard drop : Space Bar</p>
+            <br>
+            <p id="help">rotate : ↑, Z</p>
+            <br>
+            <p id="help">pause : ESC</p>
+            <p class="sub" id="RULE" onclick="info()">RULE</p>
+            <div id="comboField"><i></i></div>
+        </div>
+
+        <table id="nextTable" border="0">
+
+            <tr class="wall-color"><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td></tr>
+            
+            
+            <tr><td id="00-0"></td><td id="01-0"></td><td id="02-0"></td><td id="03-0"></td></tr>
+            <tr><td id="10-0"></td><td id="11-0"></td><td id="12-0"></td><td id="13-0"></td></tr>
+            <tr><td id="20-0"></td><td id="21-0"></td><td id="22-0"></td><td id="23-0"></td></tr>
+            <tr><td id="30-0"></td><td id="31-0"></td><td id="32-0"></td><td id="33-0"></td></tr>
+
+            <tr><td id="00-1"></td><td id="01-1"></td><td id="02-1"></td><td id="03-1"></td></tr>
+            <tr><td id="10-1"></td><td id="11-1"></td><td id="12-1"></td><td id="13-1"></td></tr>
+            <tr><td id="20-1"></td><td id="21-1"></td><td id="22-1"></td><td id="23-1"></td></tr>
+            <tr><td id="30-1"></td><td id="31-1"></td><td id="32-1"></td><td id="33-1"></td></tr>
+
+            <tr><td id="00-2"></td><td id="01-2"></td><td id="02-2"></td><td id="03-2"></td></tr>
+            <tr><td id="10-2"></td><td id="11-2"></td><td id="12-2"></td><td id="13-2"></td></tr>
+            <tr><td id="20-2"></td><td id="21-2"></td><td id="22-2"></td><td id="23-2"></td></tr>
+            <tr><td id="30-2"></td><td id="31-2"></td><td id="32-2"></td><td id="33-2"></td></tr>
+
+            <tr><td id="00-3"></td><td id="01-3"></td><td id="02-3"></td><td id="03-3"></td></tr>
+            <tr><td id="10-3"></td><td id="11-3"></td><td id="12-3"></td><td id="13-3"></td></tr>
+            <tr><td id="20-3"></td><td id="21-3"></td><td id="22-3"></td><td id="23-3"></td></tr>
+            <tr><td id="30-3"></td><td id="31-3"></td><td id="32-3"></td><td id="33-3"></td></tr>
+
+            <tr><td id="00-4"></td><td id="01-4"></td><td id="02-4"></td><td id="03-4"></td></tr>
+            <tr><td id="10-4"></td><td id="11-4"></td><td id="12-4"></td><td id="13-4"></td></tr>
+            <tr><td id="20-4"></td><td id="21-4"></td><td id="22-4"></td><td id="23-4"></td></tr>
+            <tr><td id="30-4"></td><td id="31-4"></td><td id="32-4"></td><td id="33-4"></td></tr>
+
+            
+            <tr class="wall-color"><td></td><td></td><td></td><td></td></tr>
+
+        </table>
+
+        <!--gameTable-->
+        <script type="text/javascript" src="tetris-v3.js"></script>
+
+    </div>
+
+</body>
+
+</html>
