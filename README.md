@@ -3,4 +3,4 @@
 
 
 ### TETRIS
-[https://yashin20.github.io/front-games/tetris-v2/tetris.html](https://yashin20.github.io/front-games/tetris-v3/tetris-v3.html)
+[TETRIS 바로가기](https://yashin20.github.io/front-games/tetris-v3/tetris-v3.html)
