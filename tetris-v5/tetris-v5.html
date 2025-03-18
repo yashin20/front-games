@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Tetris</title>
+    <link rel="stylesheet" type="text/css" href="tetris-v5.css">
+</head>
+
+<body>
+
+    <div id="gameField">
+        <div id="gameover">
+            <h1>Game Over</h1>
+            <h4>press 'F5' to restart</h4>
+        </div>
+        <div id="pause">
+            <h1>Pause</h1>
+            <h4>press 'F5' to resume</h4>
+        </div>
+
+        <div id="custom-view">
+            <!--hold memory ()-->
+            <table id="holdTable">
+                <tr><td colspan="5" class="next-title">HOLD</td></tr>
+                <tr><td class="wall-color"></td><td colspan="4"></td></tr>
+
+                <tr><td class="wall-color"></td><td id="hold-00"></td><td id="hold-01"></td><td id="hold-02"></td><td id="hold-03"></td></tr>
+                <tr><td class="wall-color"></td><td id="hold-10"></td><td id="hold-11"></td><td id="hold-12"></td><td id="hold-13"></td></tr>
+                <tr><td class="wall-color"></td><td id="hold-20"></td><td id="hold-21"></td><td id="hold-22"></td><td id="hold-23"></td></tr>
+                <tr><td class="wall-color"></td><td id="hold-30"></td><td id="hold-31"></td><td id="hold-32"></td><td id="hold-33"></td></tr>
+
+                <tr class="wall-color"><td></td><td></td><td></td><td></td><td></td></tr>
+            </table>
+
+            <table id="score-view">
+                <tr><td class="wall-color"></td><td></td><td></td><td></td><td></td></tr>
+
+                <tr><td class="wall-color"></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td class="wall-color"></td><td id="gem-49"></td><td id="gem-50"></td><td id="gem-51"></td><td id="gem-52"></td></tr>
+                <tr><td class="wall-color"></td><td id="gem-45"></td><td id="gem-46"></td><td id="gem-47"></td><td id="gem-48"></td></tr>
+                <tr><td class="wall-color"></td><td id="gem-41"></td><td id="gem-42"></td><td id="gem-43"></td><td id="gem-44"></td></tr>
+                <tr><td class="wall-color"></td><td id="gem-37"></td><td id="gem-38"></td><td id="gem-39"></td><td id="gem-40"></td></tr>
+                <tr><td class="wall-color"></td><td id="gem-33"></td><td id="gem-34"></td><td id="gem-35"></td><td id="gem-36"></td></tr>
+                <tr><td class="wall-color"></td><td id="gem-29"></td><td id="gem-30"></td><td id="gem-31"></td><td id="gem-32"></td></tr>
+                <tr><td class="wall-color"></td><td id="gem-25"></td><td id="gem-26"></td><td id="gem-27"></td><td id="gem-28"></td></tr>
+                <tr><td class="wall-color"></td><td id="gem-21"></td><td id="gem-22"></td><td id="gem-23"></td><td id="gem-24"></td></tr>
+                <tr><td class="wall-color"></td><td id="gem-17"></td><td id="gem-18"></td><td id="gem-19"></td><td id="gem-20"></td></tr>
+                <tr><td class="wall-color"></td><td id="gem-13"></td><td id="gem-14"></td><td id="gem-15"></td><td id="gem-16"></td></tr>
+                <tr><td class="wall-color"></td><td id="gem-9"></td><td id="gem-10"></td><td id="gem-11"></td><td id="gem-12"></td></tr>
+                <tr><td class="wall-color"></td><td id="gem-5"></td><td id="gem-6"></td><td id="gem-7"></td><td id="gem-8"></td></tr>
+                <tr><td class="wall-color"></td><td id="gem-1"></td><td id="gem-2"></td><td id="gem-3"></td><td id="gem-4"></td></tr>
+
+                <tr class="wall-color"><td></td><td></td><td></td><td></td><td></td></tr>
+            </table>
+        </div>
+
+        
+
+        <div id="scoreField">
+            <p class="sub">LEVEL</p>
+            <p id="level">1</p>
+            <p class="sub">SCORE</p>
+            <p id="score">0</p>
+            <p class="sub">HELP</p>
+            <p id="help">move : ←↓→</p>
+            <p id="help">hard drop : Space Bar</p>
+            <br>
+            <p id="help">rotate : ↑, Z</p>
+            <p id="help">hold : C</p>
+            <p id="help">pause : ESC</p>
+            <p class="sub" id="RULE" onclick="info()">RULE</p>
+            <div id="comboField"><i></i></div>
+        </div>
+
+        <table id="nextTable" border="0">
+            <!-- NEXT 제목 추가 -->
+            <tr><td colspan="4" class="next-title">NEXT</td></tr>
+            <tr></tr>
+            
+            <tr><td id="00-0"></td><td id="01-0"></td><td id="02-0"></td><td id="03-0"></td></tr>
+            <tr><td id="10-0"></td><td id="11-0"></td><td id="12-0"></td><td id="13-0"></td></tr>
+            <tr><td id="20-0"></td><td id="21-0"></td><td id="22-0"></td><td id="23-0"></td></tr>
+            <tr><td id="30-0"></td><td id="31-0"></td><td id="32-0"></td><td id="33-0"></td></tr>
+
+            <tr><td id="00-1"></td><td id="01-1"></td><td id="02-1"></td><td id="03-1"></td></tr>
+            <tr><td id="10-1"></td><td id="11-1"></td><td id="12-1"></td><td id="13-1"></td></tr>
+            <tr><td id="20-1"></td><td id="21-1"></td><td id="22-1"></td><td id="23-1"></td></tr>
+            <tr><td id="30-1"></td><td id="31-1"></td><td id="32-1"></td><td id="33-1"></td></tr>
+
+            <tr><td id="00-2"></td><td id="01-2"></td><td id="02-2"></td><td id="03-2"></td></tr>
+            <tr><td id="10-2"></td><td id="11-2"></td><td id="12-2"></td><td id="13-2"></td></tr>
+            <tr><td id="20-2"></td><td id="21-2"></td><td id="22-2"></td><td id="23-2"></td></tr>
+            <tr><td id="30-2"></td><td id="31-2"></td><td id="32-2"></td><td id="33-2"></td></tr>
+
+            <tr><td id="00-3"></td><td id="01-3"></td><td id="02-3"></td><td id="03-3"></td></tr>
+            <tr><td id="10-3"></td><td id="11-3"></td><td id="12-3"></td><td id="13-3"></td></tr>
+            <tr><td id="20-3"></td><td id="21-3"></td><td id="22-3"></td><td id="23-3"></td></tr>
+            <tr><td id="30-3"></td><td id="31-3"></td><td id="32-3"></td><td id="33-3"></td></tr>
+
+            <tr><td id="00-4"></td><td id="01-4"></td><td id="02-4"></td><td id="03-4"></td></tr>
+            <tr><td id="10-4"></td><td id="11-4"></td><td id="12-4"></td><td id="13-4"></td></tr>
+            <tr><td id="20-4"></td><td id="21-4"></td><td id="22-4"></td><td id="23-4"></td></tr>
+            <tr><td id="30-4"></td><td id="31-4"></td><td id="32-4"></td><td id="33-4"></td></tr>
+
+            <tr class="wall-color"><td></td><td></td><td></td><td></td></tr>
+        </table>
+
+        <!--gameTable-->
+        <script type="text/javascript" src="tetris-v5.js"></script>
+
+    </div>
+
+</body>
+
+</html>
