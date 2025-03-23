@@ -13,6 +13,8 @@ var tableID = [
   ["30", "31", "32", "33"]
 ];
 var score, best = 0, moves, time;
+var timer; // 타이머 변수
+
 
 document.onkeydown = keyDownEventHandler;
 function keyDownEventHandler(e){
@@ -29,6 +31,13 @@ function init() {
   score = 0; //score 초기화
   moves = 0;
   time = 0;
+
+
+  // 기존 타이머가 실행 중이면 초기화
+  if (timer) clearInterval(timer);
+  updateTime(); // 타이머 시작
+
+
   //board 초기화
   for (var i=0; i<4; i++) {
     for (var j=0; j<4; j++) {
@@ -54,6 +63,7 @@ function update() {
       coloring(cell);
     }
   }
+
   document.getElementById("score").innerHTML = score;
 }
 
@@ -119,12 +129,18 @@ function coloring(cell){
 }
 
 function moveDir(dir) {
+
+  //이전상태 저장
+  savePreviousState();
+
+
   switch (dir) {
     case 0: move(); break; //up
     case 1: rotate(2); move(); rotate(2); break; //down
     case 2: rotate(1); move(); rotate(3); break; //left
     case 3: rotate(3); move(); rotate(1); break; //right
   }
+
   update();
 }
 
@@ -206,7 +222,10 @@ function move() {
     }
   }
 
-  if(isMoved) generate();
+  if(isMoved) {
+    generate();
+    movesCount();
+  }
   else checkGameOver();
 }
 
@@ -249,11 +268,6 @@ function getMaxNum() {
   return ret;
 }
 
-//return best score
-function getBestScore() {
-  best = score > best ? score : best;
-}
-
 //game over check
 function checkGameOver() {
   //column checking
@@ -279,6 +293,71 @@ function checkGameOver() {
 }
 
 function gameover(){
-  alert("[Game Over]\nMax: "+getMaxNum()+"\nScore"+score);
+  clearInterval(timer); // 타이머 정지
+  alert("[Game Over]\nMax: "+getMaxNum()
+  +"\nScore: "+score 
+  + "\nMoves: " + moves 
+  +"\nTime: "+time);
+
+  updateBestScore();
   init();
+}
+
+
+//best score update
+function updateBestScore() {
+  if (score > best) {
+    best = score;
+    document.getElementById("best").innerHTML = best;
+  }
+}
+
+//'moves' count
+function movesCount() {
+  moves++;
+  document.getElementById("moves").innerHTML = moves;
+}
+
+//'time' count
+function updateTime() {
+  timer = setInterval(function () {
+    time++;
+    document.getElementById("time").innerHTML = time;
+  }, 1000);
+}
+
+//'New Game' 
+document.getElementById("newGame").addEventListener("click", function () {
+  init();
+});
+
+
+/**
+ * undo
+ */
+var prevBoard = [];
+var prevScore = 0;
+var prevMoves = 0;
+
+function savePreviousState() {
+  prevBoard = board.map(row => [...row]);
+  prevScore = score;
+  prevMoves = moves;
+}
+
+document.getElementById("btnUndo").addEventListener("click", function () {
+  undo();
+});
+
+
+function undo() {
+  if (prevBoard.length === 0) return; // 저장된 상태가 없으면 실행 안 함
+
+  // 이전 상태로 복원
+  board = prevBoard.map(row => [...row]); 
+  score = prevScore;
+  moves = prevMoves;
+
+  document.getElementById("moves").innerHTML = moves;
+  update(); // 화면 업데이트
 }
