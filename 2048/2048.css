@@ -48,7 +48,7 @@ body {
   margin-top: 5px;
 }
 
-#currentScore, #bestScore {
+#score, #best {
   font-size: 24px;
   font-weight: bold;
   color: #f9f6f2;
