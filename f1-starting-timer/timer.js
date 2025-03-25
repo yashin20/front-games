@@ -1,6 +1,7 @@
 const lights = Array.prototype.slice.call(document.querySelectorAll('.light-strip'));
 const time = document.querySelector('.time');
 const best = document.querySelector('.best span');
+const message = document.querySelector('.message');
 let bestTime = Number(localStorage.getItem('best')) || Infinity;
 let started = false;
 let lightsOutTime = 0;
@@ -21,8 +22,6 @@ function formatTime(time) {
 if (bestTime != Infinity) {
   best.textContent = formatTime(bestTime);
 }
-
-
 
 function start() {
   //all lights off!
@@ -72,7 +71,6 @@ function rls(now) {
 }
 
 
-
 function end(timeStamp) {
   cancelAnimationFrame(raf);
   clearTimeout(timeout);
@@ -81,13 +79,23 @@ function end(timeStamp) {
   if (!lightsOutTime) {
     time.textContent = "Jump start!";
     time.classList.add('anim');
+    message.textContent = ""; // 점프 스타트 시 메시지 초기화
     return;
   }
   else {
     const thisTime = timeStamp - lightsOutTime;
     time.textContent = formatTime(thisTime);
+
+
+    const slowerDriver = findSlowerDriver(thisTime);
+
+    if (slowerDriver) {
+      message.textContent = `${slowerDriver}보다 빠릅니다!`;
+    } else {
+      message.textContent = "";
+    }
     
-    //'best' 갱신신
+    //'best' 갱신
     if (thisTime < bestTime) {
       bestTime = thisTime;
       best.textContent = time.textContent;
@@ -97,6 +105,16 @@ function end(timeStamp) {
     time.classList.add('anim');
   }
 }
+
+function findSlowerDriver(userTime) {
+  for (const [driver, time] of reactionTimes) {
+    if (userTime <= time * 1000) {
+      return driver; // 첫 번째로 큰 반응 속도를 가진 선수 반환
+    }
+  }
+  return null; // 모든 선수 보다 느리면
+}
+
 
 
 function tap(event) {
