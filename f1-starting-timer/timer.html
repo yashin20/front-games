@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>F1 Starting Timer</title>
+  <link rel="icon" sizes="600x600" href="flag.png">
+</head>
+<link rel="stylesheet" type="text/css" href="timer.css">
+<body>
+
+  <div class="f1-lights">
+    <div class="back-board"></div>
+    <div class="light-strip">
+      <div class="light"></div>
+      <div class="light"></div>
+      <div class="light"></div>
+      <div class="light"></div>
+    </div>
+    <div class="light-strip">
+      <div class="light"></div>
+      <div class="light"></div>
+      <div class="light"></div>
+      <div class="light"></div>
+    </div>
+    <div class="light-strip">
+      <div class="light"></div>
+      <div class="light"></div>
+      <div class="light"></div>
+      <div class="light"></div>
+    </div>
+    <div class="light-strip">
+      <div class="light"></div>
+      <div class="light"></div>
+      <div class="light"></div>
+      <div class="light"></div>
+    </div>
+    <div class="light-strip">
+      <div class="light"></div>
+      <div class="light"></div>
+      <div class="light"></div>
+      <div class="light"></div>
+    </div>
+  </div>
+
+  <p>라이트는 1초 간격으로 하나씩 켜지고, 모두 켜진 후 0.2~3초 내에 일괄 소등되면서 레이스가 시작됩니다. (소등 타이밍은 랜덤이며, 이를 통해 반응 출발을 테스트함)</p>
+  <div class="results">
+    <div class="time">00.000</div>
+    <div class="best">Personal Best: <span>00.000</span></div>
+  </div>
+
+  <script type="text/javascript" src="player-recode.js"></script>
+  <script type="text/javascript" src="timer.js"></script>
+</body>
+</html>
+
+
+
+<!-- 레드 라이트 시퀀스 (Red Light Sequence)
+
+스타트 신호는 총 5개의 레드 라이트로 이루어집니다.
+
+라이트는 1초 간격으로 하나씩 켜지고, 모두 켜진 후 0.2~3초 내에 일괄 소등되면서 레이스가 시작됩니다.
+(소등 타이밍은 랜덤이며, 이를 통해 반응 출발을 테스트함) -->
