@@ -1,3 +1,10 @@
+//로컬 스토리지에 '2048-best' 명으로 최고 기록 저장!
+const bestScore = document.querySelector('#best');
+let best = Number(localStorage.getItem('2048-best')) || 0;
+if (best != 0) {
+  bestScore.textContent = best;
+}
+
 var SIZE = 4;
 
 var board = [
@@ -12,7 +19,7 @@ var tableID = [
   ["20", "21", "22", "23"],
   ["30", "31", "32", "33"]
 ];
-var score, best = 0, moves, time;
+var score, moves, time;
 var timer; // 타이머 변수
 
 
@@ -307,8 +314,9 @@ function gameover(){
 //best score update
 function updateBestScore() {
   if (score > best) {
-    best = score;
+    best = parseInt(score);
     document.getElementById("best").innerHTML = best;
+    localStorage.setItem('best', best);
   }
 }
 
