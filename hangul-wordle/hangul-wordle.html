@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HANGUL WORDLE</title>
+  <link rel="icon" sizes="600x600" href="hangul-wordle.png">
+  <link rel="stylesheet" type="text/css" href="hangul-wordle.css">
+</head>
+
+<body>
+
+  <div id="title-bar">
+    <p id="title-text">한글워들</p>
+  </div>
+
+  <div id="game-field">
+    <div class="row">
+      <div class="tile empty"></div>
+      <div class="tile empty"></div>
+      <div class="tile empty"></div>
+      <div class="tile empty"></div>
+      <div class="tile empty"></div>
+    </div>
+    <div class="row">
+      <div class="tile empty"></div>
+      <div class="tile empty"></div>
+      <div class="tile empty"></div>
+      <div class="tile empty"></div>
+      <div class="tile empty"></div>
+    </div>
+    <div class="row">
+      <div class="tile empty"></div>
+      <div class="tile empty"></div>
+      <div class="tile empty"></div>
+      <div class="tile empty"></div>
+      <div class="tile empty"></div>
+    </div>
+    <div class="row">
+      <div class="tile empty"></div>
+      <div class="tile empty"></div>
+      <div class="tile empty"></div>
+      <div class="tile empty"></div>
+      <div class="tile empty"></div>
+    </div>
+    <div class="row">
+      <div class="tile empty"></div>
+      <div class="tile empty"></div>
+      <div class="tile empty"></div>
+      <div class="tile empty"></div>
+      <div class="tile empty"></div>
+    </div>
+    <div class="row">
+      <div class="tile empty"></div>
+      <div class="tile empty"></div>
+      <div class="tile empty"></div>
+      <div class="tile empty"></div>
+      <div class="tile empty"></div>
+    </div>
+  </div>
+
+
+  <div class="keyboard">
+    <div class="keyboard-row">
+      <div class="key" data-letter="ㅂ">ㅂ</div>
+      <div class="key" data-letter="ㅈ">ㅈ</div>
+      <div class="key" data-letter="ㄷ">ㄷ</div>
+      <div class="key" data-letter="ㄱ">ㄱ</div>
+      <div class="key" data-letter="ㅅ">ㅅ</div>
+      <div class="key" data-letter="ㅛ">ㅛ</div>
+      <div class="key" data-letter="ㅕ">ㅕ</div>
+      <div class="key" data-letter="ㅑ">ㅑ</div>
+      <div class="key" data-letter="ㅐ">ㅐ</div>
+      <div class="key" data-letter="ㅔ">ㅔ</div>
+    </div>
+    <div class="keyboard-row">
+      <div class="key" data-letter="SHIFT">SHIFT OFF</div>
+      <div class="key" data-letter="ㅁ">ㅁ</div>
+      <div class="key" data-letter="ㄴ">ㄴ</div>
+      <div class="key" data-letter="ㅇ">ㅇ</div>
+      <div class="key" data-letter="ㄹ">ㄹ</div>
+      <div class="key" data-letter="ㅎ">ㅎ</div>
+      <div class="key" data-letter="ㅗ">ㅗ</div>
+      <div class="key" data-letter="ㅓ">ㅓ</div>
+      <div class="key" data-letter="ㅏ">ㅏ</div>
+      <div class="key" data-letter="ㅣ">ㅣ</div>
+    </div>
+    <div class="keyboard-row">
+      <div class="key disabled" data-letter="ENTER">ENTER</div>
+      <div class="key" data-letter="ㅋ">ㅋ</div>
+      <div class="key" data-letter="ㅌ">ㅌ</div>
+      <div class="key" data-letter="ㅊ">ㅊ</div>
+      <div class="key" data-letter="ㅍ">ㅍ</div>
+      <div class="key" data-letter="ㅠ">ㅠ</div>
+      <div class="key" data-letter="ㅜ">ㅜ</div>
+      <div class="key" data-letter="ㅡ">ㅡ</div>
+      <div class="key" data-letter="BACKSPACE">⌫</div>
+    </div>
+  </div>
+
+
+
+  <!--Modal-->
+  <div id="game-over-modal" class="modal">
+    <div class="modal-content">
+      <h2>게임 오버!</h2>
+      <p id="modal-message">정답은 ~~ 입니다.</p>
+      <pre id="resultBoard" style="font-size: 24px; line-height: 1.4;"></pre>
+      <button class="custom-button" onclick="restartGame()">다시 시작</button>
+      <button id="share-button" class="custom-button" onclick="copyForShare()">공유 🔗</button>
+    </div>
+  </div>
+
+  <!-- 토스트 메시지 -->
+  <div id="toast">Copy Toast Message</div>
+
+  <script type="text/javascript" src="hangul-data.js"></script>
+  <script type="text/javascript" src="API-method.js"></script>
+  <script type="text/javascript" src="hangul-method.js"></script>
+  <script type="text/javascript" src="hangul-wordle.js"></script>
+</body>
+
+</html>

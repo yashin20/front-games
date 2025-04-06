@@ -1,0 +1,303 @@
+@font-face {
+  font-family: 'HancomHoonminjeongeumH';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2406-1@1.0/HancomHoonminjeongeumH.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 폰트를 사용하는 예시 */
+body,
+.tile,
+.keyboard,
+.title-bar {
+  font-family: 'HancomHoonminjeongeumH', sans-serif;
+  /* HancomHoonminjeongeumH 폰트 적용 */
+}
+
+#title-text {
+  font-size: 50px;
+}
+
+
+#title-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#game-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  /*row 간격*/
+  padding-bottom: 50px;
+}
+
+.row {
+  display: flex;
+  gap: 6px;
+  /*tile 간격*/
+  margin-bottom: 6px;
+}
+
+.tile.empty {
+  width: 60px;
+  height: 60px;
+  font-size: 40px;
+  text-align: center;
+  border-radius: 5%;
+  border: 2px solid #aaa;
+  /* 연한 테두리 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 입력된 글자 (하이라이트 효과) */
+.tile.letter {
+  width: 60px;
+  height: 60px;
+  font-size: 40px;
+  border: 2px solid #333;
+  /* 더 굵고 강한 테두리 */
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tile.letter.anim {
+  animation: bang 0.1s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes bang {
+  from {
+    transform: scale(2);
+  }
+}
+
+
+.tile.letter.flip {
+  animation: flip 0.5s ease-in-out;
+}
+
+/* 딱지치기 애니메이션 */
+@keyframes flip {
+  0% {
+    transform: rotateX(0deg);
+  }
+
+  50% {
+    transform: rotateX(90deg);
+  }
+
+  100% {
+    transform: rotateX(0deg);
+  }
+}
+
+
+
+/* 정답인 글자 (초록색) */
+.tile.letter.correct {
+  background-color: #6aaa64;
+  /* 초록색 */
+  color: white;
+  border-color: #6aaa64;
+}
+
+.tile.letter.correct.anim {
+  animation: wave 0.3s ease-in-out;
+}
+
+@keyframes wave {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+    /* 위로 이동 */
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* 포함된 글자 (노란색) */
+.tile.letter.include {
+  background-color: #c9b458;
+  /* 노란색 */
+  color: white;
+  border-color: #c9b458;
+}
+
+/* 틀린 글자 (회색) */
+.tile.letter.none {
+  background-color: #787c7e;
+  /* 회색 */
+  color: white;
+  border-color: #787c7e;
+}
+
+
+/*
+ * GameOver Modal
+ */
+/* 모달 기본 숨김 */
+.modal {
+  display: none;
+  /* 기본적으로 숨김 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+/*
+ * keyboard style
+ */
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  /* 줄 간 간격 */
+}
+
+.keyboard-row {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  /* 키 간 간격 */
+}
+
+.key {
+  width: 45px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #333;
+  /* 테두리 추가 */
+  border-radius: 5px;
+  font-size: 24px;
+  font-weight: bold;
+  background-color: #ddd;
+  cursor: pointer;
+  user-select: none;
+}
+
+.key[data-letter="SHIFT"] {
+  width: 107px;
+  background-color: #ccc;
+  /* 회색으로 비활성화 표시 */
+  color: #999;
+  /* 흐리게 보이도록 폰트 색상 설정 */
+}
+
+.key[data-letter="SHIFT"].active {
+  background-color: red;
+  /* 노란색 */
+  color: black;
+}
+
+.key[data-letter="ENTER"] {
+  width: 73px;
+}
+
+.key[data-letter="BACKSPACE"] {
+  width: 73px;
+}
+
+.key.correct {
+  background-color: #6aaa64;
+  /* 초록색 */
+}
+
+.key.include {
+  background-color: #c9b458;
+  /* 노란색 */
+}
+
+.key.none {
+  background-color: #787c7e;
+  /* 회색 */
+}
+
+.key:hover {
+  background-color: #bbb;
+}
+
+.key.disabled {
+  background-color: #ccc;
+  /* 회색으로 비활성화 표시 */
+  color: #999;
+  /* 흐리게 보이도록 폰트 색상 설정 */
+  cursor: not-allowed;
+}
+
+.key[data-letter="ENTER"]:not(.disabled):hover {
+  background-color: #bbb;
+  /* 활성화된 상태에서만 hover 효과 */
+  color: black;
+  /* 활성화된 상태에서 폰트 색상 */
+}
+
+
+
+
+/*모달 버튼*/
+.custom-button {
+  background-color: #28a745;
+  /* 초록색 */
+  color: white;
+  /* 글씨는 흰색 */
+  border: none;
+  border-radius: 5px;
+  /* 둥근 직사각형 */
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin: 5px;
+}
+
+.custom-button:hover {
+  background-color: #218838;
+  /* 호버 시 더 진한 초록 */
+}
+
+/*Toast Message*/
+#toast {
+  position: fixed;
+  top: 150px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s;
+  z-index: 9999;
+}
