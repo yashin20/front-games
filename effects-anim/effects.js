@@ -34,9 +34,9 @@ window.animate = {
     const el = document.querySelector(`.char[data-name="${character.name}"]`);
     if (!el) return;
     const flash = document.createElement("div");
-    flash.className = "flash-energy";
+    flash.className = "energy-effect";
     el.appendChild(flash);
-    setTimeout(() => flash.remove(), 600);
+    setTimeout(() => flash.remove(), 2000);
   },
   guard(character) {
     const el = document.querySelector(`.char[data-name="${character.name}"]`);
@@ -48,10 +48,10 @@ window.animate = {
 
     // 방패 이펙트 추가
     const shield = document.createElement("div");
-    shield.className = "guard-shield";
+    shield.className = "shield";
     el.appendChild(shield);
 
-    setTimeout(() => shield.remove(), 500);
+    setTimeout(() => shield.remove(), 2000);
   },
   attack(character, hitPositions) {
     const charEl = document.querySelector(`.char[data-name="${character.name}"]`);
@@ -140,6 +140,75 @@ window.animate = {
 
       const effect = document.createElement("div");
       effect.className = "attack-storm-effect";
+      td.appendChild(effect);
+
+      setTimeout(() => effect.remove(), 800);
+    });
+  },
+  attackFire(character, hitPositions) {
+    const charEl = document.querySelector(`.char[data-name="${character.name}"]`);
+    if (!charEl) return;
+
+    const field = charEl.closest('.field');
+    if (!field) return;
+
+    // 1. 카메라 흔들림 효과
+    field.classList.add("shake");
+    setTimeout(() => field.classList.remove("shake"), 300);
+
+    // 2. 히트 이펙트 생성 (좌표 → 해당 셀에 넣기)
+    hitPositions.forEach(([y, x]) => {
+      const td = field.querySelector(`td[data-pos="${y}-${x}"]`);
+      if (!td) return;
+
+      const effect = document.createElement("div");
+      effect.className = "attack-fire-effect";
+      td.appendChild(effect);
+
+      setTimeout(() => effect.remove(), 800);
+    });
+  },
+  explosion(character, hitPositions) {
+    const charEl = document.querySelector(`.char[data-name="${character.name}"]`);
+    if (!charEl) return;
+
+    const field = charEl.closest('.field');
+    if (!field) return;
+
+    // 1. 카메라 흔들림 효과
+    field.classList.add("shake");
+    setTimeout(() => field.classList.remove("shake"), 300);
+
+    // 2. 히트 이펙트 생성 (좌표 → 해당 셀에 넣기)
+    hitPositions.forEach(([y, x]) => {
+      const td = field.querySelector(`td[data-pos="${y}-${x}"]`);
+      if (!td) return;
+
+      const effect = document.createElement("div");
+      effect.className = "attack-fire-explosion-effect";
+      td.appendChild(effect);
+
+      setTimeout(() => effect.remove(), 800);
+    });
+  },
+  explosionBlue(character, hitPositions) {
+    const charEl = document.querySelector(`.char[data-name="${character.name}"]`);
+    if (!charEl) return;
+
+    const field = charEl.closest('.field');
+    if (!field) return;
+
+    // 1. 카메라 흔들림 효과
+    field.classList.add("shake");
+    setTimeout(() => field.classList.remove("shake"), 300);
+
+    // 2. 히트 이펙트 생성 (좌표 → 해당 셀에 넣기)
+    hitPositions.forEach(([y, x]) => {
+      const td = field.querySelector(`td[data-pos="${y}-${x}"]`);
+      if (!td) return;
+
+      const effect = document.createElement("div");
+      effect.className = "attack-fire-blue-explosion-effect";
       td.appendChild(effect);
 
       setTimeout(() => effect.remove(), 800);
@@ -244,4 +313,13 @@ window.addEventListener("DOMContentLoaded", () => {
 
   document.getElementById("attackBtnStorm").onclick = () =>
     window.animate.attackStorm(attackCharThird, [[0, 0], [0, 1], [0, 2], [1, 0], [1, 1], [1, 2], [2, 0], [2, 1], [2, 2]]);
+
+  document.getElementById("attackFireBtn").onclick = () =>
+    window.animate.attackFire(attackCharThird, [[0, 0], [0, 1], [0, 2], [1, 0], [1, 1], [1, 2], [2, 0], [2, 1], [2, 2]]);
+
+  document.getElementById("explosion").onclick = () =>
+    window.animate.explosion(attackCharThird, [[0, 0], [0, 1], [0, 2], [1, 0], [1, 1], [1, 2], [2, 0], [2, 1], [2, 2]]);
+
+  document.getElementById("blue-explosion").onclick = () =>
+    window.animate.explosionBlue(attackCharThird, [[0, 0], [0, 1], [0, 2], [1, 0], [1, 1], [1, 2], [2, 0], [2, 1], [2, 2]]);
 });
