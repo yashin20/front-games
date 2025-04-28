@@ -8,3 +8,4 @@ Main Page : http://www.supermaruo.shop
 
 
 https://yashin20.github.io/front-games/effects-anim/effects.html
+https://yashin20.github.io/front-games/the-battle/select-character.html
