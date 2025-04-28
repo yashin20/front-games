@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>game</title>
+  <link rel="stylesheet" type="text/css" href="anim-effect.css">
+  <link rel="stylesheet" type="text/css" href="game.css">
+  
+  <style>
+.combo-result {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  gap: 50px;
+  
+  margin-top: 10px; /* 이 값을 줄여주세요 */
+  margin-bottom: 50px;
+}
+
+.game-cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.game-cards.player .game-card-container,
+.game-cards.com .game-card-container {
+  display: flex;
+  gap: 10px;
+}
+
+.game-cards.player .game-card-container {
+  flex-direction: row-reverse;
+}
+
+.game-card {
+  background: #222;
+  border: 3px solid gold;
+  border-radius: 10px;
+  width: 80px;
+  height: 120px;
+  font-family: monospace;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+.game-cards.com .game-card {
+  border-color: crimson;
+  box-shadow: 0 0 10px rgba(220, 20, 60, 0.4);
+}
+
+
+  </style>
+</head>
+
+<body>
+  <div class="game-screen">
+
+    <div id="roundMessage" class="round-message hidden">Round 1 Start!</div>
+
+    <div class="score-board">
+      <div class="photo" id="player-photo">
+        <img src="">
+      </div>
+
+      <div class="player" id="player-score">
+
+        <!-- 예: player healthbar -->
+        <div class="bar healthbar" id="player-healthbar">
+          <div class="fill" id="player-hp-fill"></div>
+          <span class="bar-label" id="player-hp">HP 100</span>
+        </div>
+
+        <!-- 예: player energybar -->
+        <div class="bar energybar" id="player-energybar">
+          <div class="fill" id="player-en-fill"></div>
+          <span class="bar-label" id="player-en">EN 100</span>
+        </div>
+
+        <div class="name" id="player-name">PLAYER NAME</div>
+      </div>
+
+      <div class="round" id="round-number">ROUND<br>00</div>
+
+      <div class="player com" id="com-score">
+
+        <!-- 예: com healthbar -->
+        <div class="bar healthbar com" id="com-healthbar">
+          <div class="fill" id="com-hp-fill"></div>
+          <span class="bar-label com" id="com-hp">HP 100</span>
+        </div>
+
+        <!-- 예: com energybar -->
+        <div class="bar energybar com" id="com-energybar">
+          <div class="fill" id="com-en-fill"></div>
+          <span class="bar-label com" id="com-en">EN 100</span>
+        </div>
+
+        <div class="name" id="com-name">COM NAME</div>
+      </div>
+
+      <div class="photo" id="com-photo">
+        <img src="">
+      </div>
+    </div>
+
+    <div class="action-log" id="action-log"></div>
+
+    <table class="gamefield">
+      <tr>
+        <td id="00" class="cell" data-pos="0-0"></td>
+        <td id="01" class="cell" data-pos="0-1"></td>
+        <td id="02" class="cell" data-pos="0-2"></td>
+        <td id="03" class="cell" data-pos="0-3"></td>
+      </tr>
+      <tr>
+        <td id="10" class="cell" data-pos="1-0"></td>
+        <td id="11" class="cell" data-pos="1-1"></td>
+        <td id="12" class="cell" data-pos="1-2"></td>
+        <td id="13" class="cell" data-pos="1-3"></td>
+      </tr>
+      <tr>
+        <td id="20" class="cell" data-pos="2-0"></td>
+        <td id="21" class="cell" data-pos="2-1"></td>
+        <td id="22" class="cell" data-pos="2-2"></td>
+        <td id="23" class="cell" data-pos="2-3"></td>
+      </tr>
+    </table>
+
+
+    <div class="combo-result">
+      <div class="game-cards player" data-label="PLAYER">
+        <div class="game-card-container">
+          <div class="game-card" id="player-card-3"></div>
+          <div class="game-card" id="player-card-2"></div>
+          <div class="game-card" id="player-card-1"></div>
+        </div>
+      </div>
+
+      <button id="nextRoundBtn">Next Round</button>
+    
+      <div class="game-cards com" data-label="COM">
+        <div class="game-card-container">
+          <div class="game-card" id="com-card-1"></div>
+          <div class="game-card" id="com-card-2"></div>
+          <div class="game-card" id="com-card-3"></div>
+        </div>
+      </div>
+    </div>
+    
+
+
+
+    <!-- GameOver Modal -->
+    <div id="gameOverModal" class="gameover-modal hidden">
+      <div class="gameover-content">
+        <h1>GAME OVER</h1>
+        <p id="gameResult">GAME RESULT</p>
+        <button id="restartBtn">다시 시작</button>
+      </div>
+    </div>
+    
+  </div>
+  <script type="text/javascript" src="game-data.js"></script>
+  <script type="text/javascript" src="anim-effect.js"></script>
+  <script type="text/javascript" src="base.js"></script>
+  <script type="text/javascript" src="game.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1018, height=800" />
+  <title>Select Character</title>
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      /* 바깥 배경은 검정 또는 원하는 색상 */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .game-screen {
+      width: 800px;
+      height: 600px;
+      background-image: url("img/coast.png");
+      background-size: cover;
+      background-position: center;
+      font-family: monospace;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      /* 테두리 */
+      border: 8px solid gold;
+      box-sizing: border-box;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 30px;
+      letter-spacing: 2px;
+      font-weight: bold;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border: 3px solid gold;
+      border-radius: 12px;
+    }
+
+    .character-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.2s ease;
+      cursor: pointer;
+    }
+
+    .character-card:hover {
+      transform: scale(1.05);
+    }
+
+    .character-card img {
+      width: 80px;
+      height: 80px;
+      border: 3px solid gold;
+    }
+
+    .character-card span {
+      margin-top: 8px;
+      font-weight: bold;
+      color: #fcd34d;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="game-screen">
+
+    <h1>SELECT A CHARACTER</h1>
+
+    <div class="grid-container">
+      <div class="character-card" data-character="BUSTER">
+        <img src="img/char/buster/buster-standing-l.png" />
+        <span>MAX BUSTER</span>
+      </div>
+      <div class="character-card" data-character="HITTER">
+        <img src="img/char/hitter/hitter-standing-l.png" />
+        <span>JOHNNY HITTER</span>
+      </div>
+      <div class="character-card" data-character="">
+        <img src="img/char/update-img/bloodsail-update.png" />
+        <span>KARMA BLOODSAIL</span>
+      </div>
+      <div class="character-card" data-character="">
+        <img src="img/char/update-img/killer-update.png" />
+        <span>NONE</span>
+      </div>
+      <div class="character-card" data-character="">
+        <img src="img/char/update-img/ronaldo-update.png" />
+        <span>NONE</span>
+      </div>
+      <div class="character-card" data-character="">
+        <img src="img/char/update-img/scientist-update.png" />
+        <span>NONE</span>
+      </div>
+      <div class="character-card" data-character="">
+        <img src="img/char/update-img/thewomen-update.png" />
+        <span>NONE</span>
+      </div>
+      <div class="character-card" data-character="">
+        <img src="img/char/update-img/trump-update.png" />
+        <span>NONE</span>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+
+</html>
+
+
+<script>
+  const characterCards = document.querySelectorAll('.character-card');
+
+  characterCards.forEach(card => {
+    card.addEventListener('click', () => {
+      const selectedCharacter = card.getAttribute('data-character');
+
+      // ✅ gameState 제거
+      localStorage.removeItem('gameState');
+
+      // ✅ 선택된 캐릭터 저장
+      localStorage.setItem('selectedCharacter', selectedCharacter);
+
+      // 다음 페이지로 이동
+      window.location.href = 'choose-cards.html';
+    });
+  });
+</script>
