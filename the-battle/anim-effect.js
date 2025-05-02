@@ -65,7 +65,7 @@ function guardAnim(character, isPlayer) {
 
 
 /**attack animation - basic(HTML + CSS) */
-function basicAttackAnim(character, hitPositions) {
+function basicAttackAnim(character, hitPositions, damage = 0) {
   const field = document.querySelector('.gamefield');
   if (!field) return;
 
@@ -73,17 +73,25 @@ function basicAttackAnim(character, hitPositions) {
   field.classList.add("shake");
   setTimeout(() => field.classList.remove("shake"), 300);
 
-  // 2. 히트 이펙트 생성
+  // 2. 히트 이펙트 + 데미지 숫자 생성
   hitPositions.forEach(([y, x]) => {
     const td = field.querySelector(`td[data-pos="${y}-${x}"]`);
     if (!td) return;
 
+    // 히트 이펙트
     const hitEl = document.createElement("div");
     hitEl.className = "hit-effect";
     td.appendChild(hitEl);
 
+    // 데미지 숫자
+    const dmgEl = document.createElement("div");
+    dmgEl.className = "damage-text";
+    dmgEl.textContent = `-${damage}`;
+    td.appendChild(dmgEl);
+
     setTimeout(() => {
       hitEl.remove();
+      dmgEl.remove();
     }, 1000);
   });
 }
