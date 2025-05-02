@@ -54,7 +54,7 @@ function init() {
   setupRound(selected, comSelected, playerObj, comObj, currentRound);
 
   // Round 시작 메시지 표시
-  showRoundMessage(`Round ${currentRound} Start!`);
+  showRoundMessage(`ROUND ${currentRound}<br>START!`);
 
   // ⭐ 초기에는 전부 가려놓기
   updateCardVisibility(-1);
@@ -107,7 +107,7 @@ function executeCard() {
   }
 
   if (cardIndex >= actionQueue.length) {
-    showRoundMessage(`Round ${currentRound} End!`);
+    showRoundMessage(`ROUND ${currentRound}<br>END!`);
 
     // 다음 라운드 버튼 보이기
     document.getElementById("nextRoundBtn").style.visibility = "visible";
@@ -189,11 +189,26 @@ function renderPlayerCards(cardKeys) {
     const cardDiv = document.getElementById(`player-card-${slotNum}`);
     if (cardDiv && cardData[selectedCharacter][key]) {
       cardDiv.innerHTML = "";
-      const img = createCardImage(cardData[selectedCharacter][key]);
-      cardDiv.appendChild(img);
 
-      const cover = createCoverLayer(); // ⭐ 덮개 추가
-      cardDiv.appendChild(cover);
+      const cardInner = document.createElement("div");
+      cardInner.className = "card-inner";
+
+      const front = document.createElement("div");
+      front.className = "card-front";
+      front.appendChild(createCardImage(cardData[selectedCharacter][key]));
+
+      const back = document.createElement("div");
+      back.className = "card-back"; // 덮개
+
+      cardInner.appendChild(front);
+      cardInner.appendChild(back);
+      cardDiv.appendChild(cardInner);
+
+      // const img = createCardImage(cardData[selectedCharacter][key]);
+      // cardDiv.appendChild(img);
+
+      // const cover = createCoverLayer(); // ⭐ 덮개 추가
+      // cardDiv.appendChild(cover);
     }
   });
 }
@@ -203,11 +218,26 @@ function renderComCards(cardKeys) {
     const cardDiv = document.getElementById(`com-card-${i + 1}`);
     if (cardDiv && cardData[comCharacter][key]) {
       cardDiv.innerHTML = "";
-      const img = createCardImage(cardData[comCharacter][key]);
-      cardDiv.appendChild(img);
 
-      const cover = createCoverLayer(); // ⭐ 덮개 추가
-      cardDiv.appendChild(cover);
+      const cardInner = document.createElement("div");
+      cardInner.className = "card-inner";
+
+      const front = document.createElement("div");
+      front.className = "card-front";
+      front.appendChild(createCardImage(cardData[comCharacter][key]));
+
+      const back = document.createElement("div");
+      back.className = "card-back"; // 덮개
+
+      cardInner.appendChild(front);
+      cardInner.appendChild(back);
+      cardDiv.appendChild(cardInner);
+
+      // const img = createCardImage(cardData[comCharacter][key]);
+      // cardDiv.appendChild(img);
+
+      // const cover = createCoverLayer(); // ⭐ 덮개 추가
+      // cardDiv.appendChild(cover);
     }
   });
 }
@@ -384,7 +414,8 @@ function getMoveDirection(cardName) {
 
 function showRoundMessage(text) {
   const messageEl = document.getElementById("roundMessage");
-  messageEl.textContent = text;
+  // messageEl.textContent = text;
+  messageEl.innerHTML = text; // 줄바꿈 처리 위해 innerHTML 사용
   messageEl.classList.remove("hidden");
 
   setTimeout(() => {
@@ -402,21 +433,16 @@ function showRoundMessage(text) {
 
 
 function updateCardVisibility(cardIndex) {
-  const cardNumber = Math.floor(cardIndex / 2) + 1;
+  // 카드 번호: 1~3
+  const turnNumber = Math.floor(cardIndex / 2) + 1;
 
   for (let i = 1; i <= 3; i++) {
-    const playerCover = document.querySelector(`#player-card-${4 - i} .card-cover`);
-    const comCover = document.querySelector(`#com-card-${i} .card-cover`);
-
-    if (playerCover) playerCover.style.display = "block";
-    if (comCover) comCover.style.display = "block";
+    document.getElementById(`player-card-${i}`).classList.remove("flipped");
+    document.getElementById(`com-card-${i}`).classList.remove("flipped");
   }
 
-  if (cardNumber >= 1 && cardNumber <= 3) {
-    const playerCover = document.querySelector(`#player-card-${4 - cardNumber} .card-cover`);
-    const comCover = document.querySelector(`#com-card-${cardNumber} .card-cover`);
-
-    if (playerCover) playerCover.style.display = "none";
-    if (comCover) comCover.style.display = "none";
+  if (turnNumber >= 1 && turnNumber <= 3) {
+    document.getElementById(`player-card-${4 - turnNumber}`).classList.add("flipped"); // 3→1
+    document.getElementById(`com-card-${turnNumber}`).classList.add("flipped");       // 1→3
   }
 }
