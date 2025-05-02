@@ -156,7 +156,7 @@ function attack(target, attackCard) {
 
   //공격 애니메이션
   const effectFn = AttackEffects[attackCard] || AttackEffects["DEFAULT"];
-  effectFn(target, hitPositions);
+  effectFn(target, hitPositions, damage);
 }
 
 /**is Hit Checking (피격 여부 판단)*/
@@ -166,29 +166,37 @@ function isHit(target, hitY, hitX) {
 
 //시그니처 스킬 애니메이션 이펙트
 const AttackEffects = {
-  "SUPER_WEIGHT": (target, hitPositions) => {
-    basicAttackAnim(target, hitPositions);
+  "SUPER_WEIGHT": (target, hitPositions, damage) => {
+    basicAttackAnim(target, hitPositions, damage);
     attackFireExplosionBitGif(target, hitPositions);
   },
-  "FINAL_REPEAT": (target, hitPositions) => {
-    basicAttackAnim(target, hitPositions);
+  "FINAL_REPEAT": (target, hitPositions, damage) => {
+    basicAttackAnim(target, hitPositions, damage);
     attackFireExplosionBitGif(target, hitPositions);
   },
-  "POWER_SWING": (target, hitPositions) => {
-    basicAttackAnim(target, hitPositions);
+  "POWER_SWING": (target, hitPositions, damage) => {
+    basicAttackAnim(target, hitPositions, damage);
     attackFireExplosionBitGif(target, hitPositions);
   },
-  "GRAND_SLAM": (target, hitPositions) => {
-    basicAttackAnim(target, hitPositions);
+  "GRAND_SLAM": (target, hitPositions, damage) => {
+    basicAttackAnim(target, hitPositions, damage);
     attackFireExplosionBitGif(target, hitPositions);
   },
-  "BAT_STORM": (target, hitPositions) => {
-    basicAttackAnim(target, hitPositions);
+  "BAT_STORM": (target, hitPositions, damage) => {
+    basicAttackAnim(target, hitPositions, damage);
     attackStormEffectGif(target, hitPositions);
   },
+  "CHICNADO": (target, hitPositions, damage) => {
+    basicAttackAnim(target, hitPositions, damage);
+    attackFireExplosionBitGif(target, hitPositions);
+  },
+  "BULLPEN_BUSTER": (target, hitPositions, damage) => {
+    basicAttackAnim(target, hitPositions, damage);
+    attackFireExplosionBitGif(target, hitPositions);
+  },
   // 기본 효과 (정의되지 않은 카드용)
-  "DEFAULT": (target, hitPositions) => {
-    basicAttackAnim(target, hitPositions);
+  "DEFAULT": (target, hitPositions, damage) => {
+    basicAttackAnim(target, hitPositions, damage);
     attackDefaultEffectGif(target, hitPositions);
   }
 };
@@ -205,6 +213,25 @@ function logAction(text) {
   logBox.appendChild(p);
   logBox.scrollTop = logBox.scrollHeight; // 자동 스크롤
 }
+
+/**안내 메시지 용 Modal 창 */
+function showAlert(message, callback) {
+  const modal = document.getElementById('customAlert');
+  const msgEl = document.getElementById('alertMessage');
+  const okBtn = document.getElementById('alertOk');
+
+  msgEl.textContent = message;
+  modal.classList.remove('hidden');
+
+  const close = () => {
+    modal.classList.add('hidden');
+    okBtn.removeEventListener('click', close);
+    if (callback) callback();
+  };
+
+  okBtn.addEventListener('click', close);
+}
+
 
 /**character object */
 class Character {
@@ -265,8 +292,15 @@ function getRandomComCharacter(exclude) {
  * PLAYER / COM 생성!
  */
 window.selectedCharacter = localStorage.getItem("selectedCharacter");
-window.comCharacter = getRandomComCharacter(window.selectedCharacter);
-localStorage.setItem('comCharacter', window.comCharacter);//로컬 스토리지에 컴퓨터 선택 캐릭터 저장
+// comCharacter가 이미 설정되어 있는지 확인
+const savedComChar = localStorage.getItem("comCharacter");
+if (savedComChar) {
+  window.comCharacter = savedComChar;
+} else {
+  const comChar = getRandomComCharacter(window.selectedCharacter);
+  window.comCharacter = comChar;
+  localStorage.setItem("comCharacter", comChar); // 최초 1회만 저장
+}
 
 /** Create Object */
 window.GameData = {
