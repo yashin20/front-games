@@ -4,8 +4,8 @@ Main Page : http://www.supermaruo.shop
 
 
 ### TETRIS  
-![테트리스](https://yashin20.github.io/front-games/tetris-v5/tetris-v5.html)  
-[TETRIS 바로가기](https://yashin20.github.io/front-games/2048/2048.html)  
+![테트리스](https://github.com/user-attachments/assets/01140b21-fb0e-4e00-a6ae-634540c6cf4b)  
+[TETRIS 바로가기](https://yashin20.github.io/front-games/tetris-v5/tetris-v5.html)  
 
 ### 2048  
 ![2048](https://github.com/user-attachments/assets/2d1f41fb-a9a0-43e5-9d7e-d5a67918b195)  
