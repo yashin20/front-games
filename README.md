@@ -4,7 +4,7 @@ Main Page : http://www.supermaruo.shop
 
 
 ### TETRIS  
-
+![image](https://github.com/user-attachments/assets/caaad597-c109-4d3b-844b-8687b33e8cc5)  
 [TETRIS 바로가기](https://yashin20.github.io/front-games/tetris-v5/tetris-v5.html)  
 
 
