@@ -29,7 +29,7 @@ function init() {
 
   currentEnergy = playerObj.energy; // ✅ 전역 변수로 저장
 
-  drawScoreBoard({ player: playerObj, com: comObj, round: 1 });
+  drawScoreBoard({ player: playerObj, com: comObj, round: currentRound });
   renderSkillCards(playerObj.name);
   placeCharacterAtCoord(playerObj.y, playerObj.x, MINI_IMG[playerObj.name]);
   placeCharacterAtCoord(comObj.y, comObj.x, MINI_IMG[comObj.name]);
@@ -40,7 +40,7 @@ function checkCharSelect() {
   const selectedCharacter = localStorage.getItem("selectedCharacter");
   if (!selectedCharacter) {
     // 선택 안 된 경우 처리
-    alert("캐릭터가 선택되지 않았습니다.");
+    alert("업데이트 대기 중 입니다! 다른 캐릭터를 선택해 주세요!");
     window.location.href = "select-character.html"; // 다시 선택 화면으로 이동
   }
 }
@@ -216,7 +216,8 @@ document.querySelector(".btn.continue").addEventListener("click", () => {
   const selected = getSelectedCardNamesInOrder();
 
   if (selected.filter(Boolean).length !== 3) {
-    alert("카드 3장을 선택해주세요!");
+    // alert("카드 3장을 선택해주세요!");
+    showAlert("카드 3장을 선택해주세요!");
     return;
   }
 
