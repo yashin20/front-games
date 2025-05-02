@@ -6,60 +6,59 @@
   <title>game</title>
   <link rel="stylesheet" type="text/css" href="anim-effect.css">
   <link rel="stylesheet" type="text/css" href="game.css">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <style>
-.combo-result {
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-start;
-  gap: 50px;
-  
-  margin-top: 10px; /* 이 값을 줄여주세요 */
-  margin-bottom: 50px;
-}
+    .combo-result {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+      gap: 50px;
 
-.game-cards {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-}
+      margin-top: 10px;
+      /* 이 값을 줄여주세요 */
+      margin-bottom: 50px;
+    }
 
-.game-cards.player .game-card-container,
-.game-cards.com .game-card-container {
-  display: flex;
-  gap: 10px;
-}
+    .game-cards {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
 
-.game-cards.player .game-card-container {
-  flex-direction: row-reverse;
-}
+    .game-cards.player .game-card-container,
+    .game-cards.com .game-card-container {
+      display: flex;
+      gap: 10px;
+    }
 
-.game-card {
-  background: #222;
-  border: 3px solid gold;
-  border-radius: 10px;
-  width: 80px;
-  height: 120px;
-  font-family: monospace;
-  font-size: 20px;
-  font-weight: bold;
-  color: white;
+    .game-cards.player .game-card-container {
+      flex-direction: row-reverse;
+    }
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    .game-card {
+      background: #222;
+      border: 3px solid gold;
+      border-radius: 10px;
+      width: 80px;
+      height: 120px;
+      font-family: monospace;
+      font-size: 20px;
+      font-weight: bold;
+      color: white;
 
-  position: relative;
-  box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
-}
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-.game-cards.com .game-card {
-  border-color: crimson;
-  box-shadow: 0 0 10px rgba(220, 20, 60, 0.4);
-}
+      position: relative;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+    }
 
-
+    .game-cards.com .game-card {
+      border-color: crimson;
+      box-shadow: 0 0 10px rgba(220, 20, 60, 0.4);
+    }
   </style>
 </head>
 
@@ -138,7 +137,7 @@
     </table>
 
 
-    <div class="combo-result">
+    <!-- <div class="combo-result">
       <div class="game-cards player" data-label="PLAYER">
         <div class="game-card-container">
           <div class="game-card" id="player-card-3"></div>
@@ -148,7 +147,7 @@
       </div>
 
       <button id="nextRoundBtn">Next Round</button>
-    
+
       <div class="game-cards com" data-label="COM">
         <div class="game-card-container">
           <div class="game-card" id="com-card-1"></div>
@@ -156,9 +155,58 @@
           <div class="game-card" id="com-card-3"></div>
         </div>
       </div>
-    </div>
-    
+    </div> -->
 
+
+    <div class="combo-result">
+      <div class="game-cards player" data-label="PLAYER">
+        <div class="game-card-container">
+          <div class="game-card" id="player-card-3">
+            <div class="card-inner">
+              <div class="card-front"></div>
+              <div class="card-back"></div>
+            </div>
+          </div>
+          <div class="game-card" id="player-card-2">
+            <div class="card-inner">
+              <div class="card-front"></div>
+              <div class="card-back"></div>
+            </div>
+          </div>
+          <div class="game-card" id="player-card-1">
+            <div class="card-inner">
+              <div class="card-front"></div>
+              <div class="card-back"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button id="nextRoundBtn">Next Round</button>
+
+      <div class="game-cards com" data-label="COM">
+        <div class="game-card-container">
+          <div class="game-card" id="com-card-1">
+            <div class="card-inner">
+              <div class="card-front"></div>
+              <div class="card-back"></div>
+            </div>
+          </div>
+          <div class="game-card" id="com-card-2">
+            <div class="card-inner">
+              <div class="card-front"></div>
+              <div class="card-back"></div>
+            </div>
+          </div>
+          <div class="game-card" id="com-card-3">
+            <div class="card-inner">
+              <div class="card-front"></div>
+              <div class="card-back"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
     <!-- GameOver Modal -->
@@ -169,7 +217,7 @@
         <button id="restartBtn">다시 시작</button>
       </div>
     </div>
-    
+
   </div>
   <script type="text/javascript" src="game-data.js"></script>
   <script type="text/javascript" src="anim-effect.js"></script>
