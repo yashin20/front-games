@@ -22,6 +22,18 @@ const cardData = {
     LEG_PRESS: "img/cards/buster/LEG_PRESS.png",
     FINAL_REPEAT: "img/cards/buster/FINAL_REPEAT.png",
     ENERGY_UP: "img/cards/buster/ENERGY_UP.png",
+  },
+  CHIC: {
+    MOVE_UP: "img/cards/chic/MOVE_UP.png",
+    MOVE_DOWN: "img/cards/chic/MOVE_DOWN.png",
+    MOVE_LEFT: "img/cards/chic/MOVE_LEFT.png",
+    MOVE_RIGHT: "img/cards/chic/MOVE_RIGHT.png",
+    GUARD: "img/cards/chic/GUARD.png",
+    BULLPEN_BUSTER: "img/cards/chic/BULLPEN_BUSTER.png",
+    CHIC_POONG_DANG_DANG: "img/cards/chic/CHIC_POONG_DANG_DANG.png",
+    CHICNADO: "img/cards/chic/CHICNADO.png",
+    EAGLE_SLAM: "img/cards/chic/EAGLE_SLAM.png",
+    ENERGY_UP: "img/cards/chic/ENERGY_UP.png",
   }
 };
 
@@ -36,7 +48,13 @@ const ATTACK_SKILLS = {
   POWER_SWING: "ATTACK-1235-50-50",
   GRAND_STEAL: "ATTACK-2468-15-15",
   GRAND_SLAM: "ATTACK-24568-40-50",
-  BAT_STORM: "ATTACK-12346789-20-35"
+  BAT_STORM: "ATTACK-12346789-20-35",
+
+  //CHIC
+  BULLPEN_BUSTER: "ATTACK-134679-30-30",
+  CHIC_POONG_DANG_DANG: "ATTACK-123456789-15-15",
+  CHICNADO: "ATTACK-456-40-30",
+  EAGLE_SLAM: "ATTACK-13579-25-25"
 }
 
 
@@ -56,16 +74,26 @@ const CHARACTERS = {
       "GRAND_SLAM",
       "BAT_STORM"
     ]
+  },
+  CHIC: {
+    attackCards: [
+      "BULLPEN_BUSTER",
+      "CHIC_POONG_DANG_DANG",
+      "CHICNADO",
+      "EAGLE_SLAM"
+    ]
   }
 };
 
 const CHAR_NAMES = {
   BUSTER: "MAX BUSTER",
   HITTER: "JOHNNY HITTER",
+  CHIC: "BADASS CHIC"
   // BLOODSAIL: "KARMA BLOODSAIL"
 };
 
 const MINI_IMG = {
   BUSTER: "img/char/buster/buster-head-l.png",
-  HITTER: "img/char/hitter/hitter-head-l.png"
+  HITTER: "img/char/hitter/hitter-head-l.png",
+  CHIC: "img/char/chic/chic-head-l.png"
 }
