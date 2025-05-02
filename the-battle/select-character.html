@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=1018, height=800" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <title>Select Character</title>
   <style>
     body {
@@ -37,6 +38,7 @@
 
     h1 {
       font-size: 28px;
+      font-family: 'Press Start 2P', monospace;  /* 폰트 추가 */
       margin-bottom: 30px;
       letter-spacing: 2px;
       font-weight: bold;
@@ -75,6 +77,59 @@
       font-weight: bold;
       color: #fcd34d;
     }
+
+    .alert-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.alert-modal.hidden {
+  display: none;
+}
+
+.alert-box {
+  background: white;
+  border-radius: 10px;
+  padding: 20px 30px;
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  animation: pop-in 0.3s ease-out;
+}
+
+.alert-box p {
+  margin-bottom: 20px;
+  font-size: 18px;
+  color: #333;
+}
+
+.alert-box button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.alert-box button:hover {
+  background-color: #0056b3;
+}
+
+@keyframes pop-in {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
   </style>
 </head>
 
@@ -92,9 +147,9 @@
         <img src="img/char/hitter/hitter-standing-l.png" />
         <span>JOHNNY HITTER</span>
       </div>
-      <div class="character-card" data-character="">
-        <img src="img/char/update-img/bloodsail-update.png" />
-        <span>KARMA BLOODSAIL</span>
+      <div class="character-card" data-character="CHIC">
+        <img src="img/char/chic/chic-standing-l.png" />
+        <span>BADASS CHIC</span>
       </div>
       <div class="character-card" data-character="">
         <img src="img/char/update-img/killer-update.png" />
@@ -120,6 +175,14 @@
 
   </div>
 
+
+  <div id="customAlert" class="alert-modal hidden">
+    <div class="alert-box">
+      <p id="alertMessage">이곳에 메시지가 표시됩니다</p>
+      <button id="alertOk">OK</button>
+    </div>
+  </div>
+  
 </body>
 
 </html>
@@ -132,8 +195,17 @@
     card.addEventListener('click', () => {
       const selectedCharacter = card.getAttribute('data-character');
 
-      // ✅ gameState 제거
-      localStorage.removeItem('gameState');
+      // ✅ 캐릭터가 유효한지 확인
+      if (!selectedCharacter || selectedCharacter.trim() === "") {
+        showAlert("캐릭터를 선택할 수 없습니다. 다시 시도해주세요.");
+        return;
+      }
+
+      // ✅ local storage 정리
+      localStorage.removeItem("gameState");
+      localStorage.removeItem("selectedCards");
+      localStorage.removeItem("selectedCharacter");
+      localStorage.removeItem("comCharacter");
 
       // ✅ 선택된 캐릭터 저장
       localStorage.setItem('selectedCharacter', selectedCharacter);
@@ -142,4 +214,22 @@
       window.location.href = 'choose-cards.html';
     });
   });
+
+  /**안내 메시지 용 Modal 창 */
+function showAlert(message, callback) {
+  const modal = document.getElementById('customAlert');
+  const msgEl = document.getElementById('alertMessage');
+  const okBtn = document.getElementById('alertOk');
+
+  msgEl.textContent = message;
+  modal.classList.remove('hidden');
+
+  const close = () => {
+    modal.classList.add('hidden');
+    okBtn.removeEventListener('click', close);
+    if (callback) callback();
+  };
+
+  okBtn.addEventListener('click', close);
+}
 </script>
