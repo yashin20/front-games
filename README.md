@@ -3,8 +3,31 @@
 Main Page : http://www.supermaruo.shop
 
 
-### TETRIS
-[TETRIS 바로가기](https://yashin20.github.io/front-games/tetris-v5/tetris-v5.html)
+### TETRIS  
 
-https://yashin20.github.io/front-games/the-battle/start-page.html  
-[The-Battle : https://yashin20.github.io/front-games/the-battle/start-page.html](https://yashin20.github.io/front-games/the-battle/start-page.html )
+[TETRIS 바로가기](https://yashin20.github.io/front-games/tetris-v5/tetris-v5.html)  
+
+
+### 2048  
+
+[2048 바로가기](https://yashin20.github.io/front-games/2048/2048.html)  
+
+
+### SNAKE  
+
+[SNAKE 바로가기](https://yashin20.github.io/front-games/snake/snake.html)  
+
+
+### F1 Starting Timer  
+
+[F1 Starting Timer 바로가기](https://yashin20.github.io/front-games/2048/2048.html)  
+
+
+### Hangul Wordle (한글 워들)  
+
+[Hangul Wordle (한글 워들)](https://yashin20.github.io/front-games/f1-starting-timer/timer.html)  
+
+
+### The Battle  
+
+[The-Battle](https://yashin20.github.io/front-games/the-battle/start-page.html)  
