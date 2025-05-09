@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wombat Game</title>
+  <link rel="stylesheet" type="text/css" href="wombat-game.css">
+</head>
+
+<body>
+  <div class="game-screen">
+
+    <!-- Intro Page -->
+    <section id="intro">
+      <div class="intro-container">
+        <div id="intro-message">
+          20초 동안<br>
+          <span class="red-color">웜뱃</span>을 잡아보세요
+        </div>
+        <div id="countdown"><span class="count-text">3</span></div>
+      </div>
+    </section>
+
+    <!-- Game Page -->
+    <section id="game" style="display:none">
+      <!-- Remaining time Gauge -->
+      <div id="time-gauge">
+        <div id="time-fill"></div>
+      </div>
+
+      <!-- Score Text -->
+      <div id="score-text">내 점수 : <span id="score">0</span></div>
+
+      <!-- game area -->
+      <div id="wombat-area">
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+      </div>
+    </section>
+
+    <!-- Result Page -->
+    <section id="result" style="display:none">
+      <div class="result-container">
+
+        <!-- 시간 종료 메시지 -->
+        <div id="time-up-message" class="time-up-message">
+          <span>시</span><span>간</span><span> </span><span>종</span><span>료</span><span>!</span>
+        </div>
+        
+
+        <div id="score-container">
+          <div style="font-size: 24px; font-weight: bold;">내 점수</div>
+          <div style="font-size: 48px; font-weight: bold;"><span id="final-score">0</span>점</div>
+
+          <img src="assets/wombat-basic.png" class="spin" style="width: 200px; height: auto;">
+
+          <div class="btn-container">
+            <button class="btn-style" id="retry-btn">다시 하기</button>
+            <button class="btn-style" id="share-btn">공유 하기</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+  <script type="text/javascript" src="wombat-game.js"></script>
+</body>
+
+</html>
