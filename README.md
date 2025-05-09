@@ -30,3 +30,7 @@ Main Page : http://www.supermaruo.shop
 ### The Battle  
 ![더배틀](https://github.com/user-attachments/assets/4b1ba540-9d4d-43cd-8611-c173c4533fa6)  
 [The-Battle](https://yashin20.github.io/front-games/the-battle/start-page.html)  
+
+
+### Wombat Game (Catch the Wombat)
+![Wombat Game (Catch the Wombat)](https://yashin20.github.io/front-games/wombat-game/wombat-game.html)
