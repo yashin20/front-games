@@ -32,6 +32,6 @@ Main Page : http://www.supermaruo.shop
 [The-Battle](https://yashin20.github.io/front-games/the-battle/start-page.html)  
 
 
-### Wombat Game (Catch the Wombat)
-![image](https://github.com/user-attachments/assets/0bbfaa0d-38db-4b69-a8af-0506649ed5e4)
-[Wombat Game (Catch the Wombat)](https://yashin20.github.io/front-games/wombat-game/wombat-game.html)
+### Wombat Game (Catch the Wombat)  
+![image](https://github.com/user-attachments/assets/0bbfaa0d-38db-4b69-a8af-0506649ed5e4)  
+[Wombat Game (Catch the Wombat)](https://yashin20.github.io/front-games/wombat-game/wombat-game.html)  
