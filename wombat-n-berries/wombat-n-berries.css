@@ -1,0 +1,87 @@
+/* 게임 화면 전체 */
+.game-screen {
+  width: 90vw;
+  height: calc(90vw * 4 / 3); /* 600x800 비율 유지 */
+  max-width: 600px;
+  max-height: 800px;
+
+  background-color: blanchedalmond;
+  border: 8px solid black;
+  box-sizing: border-box;
+
+  position: relative;
+  padding: 0;
+  margin: 0 auto;
+}
+
+
+/*** 1. INTRO PAGE ***/
+
+
+/*** 2. GAME PAGE ***/
+/*Time Gauge*/
+#time-gauge {
+  width: 90%;
+  height: 2.5vh;
+  background-color: lightgray;
+  border: 2px solid black;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 0 auto 1vh;
+}
+#time-fill {
+  width: 100%;
+  height: 100%;
+  background-color: red;
+  transition: width 0.1s linear;
+  border-radius: 0 10px 10px 0;
+}
+
+/*Score Text*/
+#score-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0 auto 3vh;
+  text-align: center;
+}
+#score {
+  color: blue;
+}
+
+#game-area {
+  width: 85vw;
+  max-width: 540px;
+  aspect-ratio: 1 / 1; /* 가로:세로 1:1 */
+  background-color: white;
+  border: 3px dashed brown;
+  position: relative;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(7, 1fr);  /* 혹은 auto */
+  gap: 0.3vw;
+}
+
+.cell {
+  background-color: beige;
+  border: 1px solid gray;
+  position: relative;
+
+  aspect-ratio: 1 / 1;
+}
+
+
+/*wombat image class. cell 크기에 맞춤*/
+.wombat-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  cursor: pointer;
+
+  position: absolute;
+  animation: wombat-enter 0.3s ease-out forwards;
+}
+
+
+/*** 3. RESULT PAGE ***/
