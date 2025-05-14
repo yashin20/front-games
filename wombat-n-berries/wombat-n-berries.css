@@ -40,7 +40,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 5px;
+  gap: 1vh;
 }
 
 .game-logo {
@@ -127,7 +127,7 @@
 
 /*Score Text*/
 #score-text {
-  font-size: 1.5rem;
+  font-size: clamp(18px, 3vw, 36px);
   font-weight: bold;
   margin: 0 auto 3vh;
   text-align: center;
@@ -152,8 +152,6 @@
 }
 
 .cell {
-  /* background-color: beige; */
-  /* border: 1px solid gray; */
   position: relative;
   aspect-ratio: 1 / 1;
 
@@ -173,12 +171,9 @@
 /*selected effect*/
 .cell.selected {
   outline: 3px solid #ff9900;
-  /* 주황색 테두리 */
   box-shadow: 0 0 10px #ffcc66;
-  /* 부드러운 빛 효과 */
   background-color: #ffcc66;
   z-index: 2;
-  /* 겹칠 경우 위로 보이게 */
 }
 
 
@@ -224,7 +219,7 @@
 
 .time-up-message {
   margin-top: 5vh;
-  font-size: 80px;
+  font-size: clamp(40px, 8vw, 80px);
   font-weight: bold;
   text-align: center;
   transform: scale(0.5);
@@ -254,55 +249,19 @@
   animation: waveUp 0.8s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
 }
 
-.delay-1 {
-  animation-delay: 0.0s;
-}
-
-.delay-2 {
-  animation-delay: 0.08s;
-}
-
-.delay-3 {
-  animation-delay: 0.16s;
-}
-
-.delay-4 {
-  animation-delay: 0.24s;
-}
-
-.delay-5 {
-  animation-delay: 0.32s;
-}
-
-.delay-6 {
-  animation-delay: 0.4s;
-}
+.delay-1 { animation-delay: 0.0s; }
+.delay-2 { animation-delay: 0.08s; }
+.delay-3 { animation-delay: 0.16s; }
+.delay-4 { animation-delay: 0.24s; }
+.delay-5 { animation-delay: 0.32s; }
+.delay-6 { animation-delay: 0.4s; }
 
 @keyframes waveUp {
-  0% {
-    transform: translateY(3px);
-    opacity: 1;
-  }
-
-  25% {
-    transform: translateY(-6px);
-    opacity: 1;
-  }
-
-  50% {
-    transform: translateY(-8px);
-    opacity: 1;
-  }
-
-  75% {
-    transform: translateY(-6px);
-    opacity: 1;
-  }
-
-  100% {
-    transform: translateY(0px);
-    opacity: 1;
-  }
+  0% { transform: translateY(3px); opacity: 1; }
+  25% { transform: translateY(-6px); opacity: 1; }
+  50% { transform: translateY(-8px); opacity: 1; }
+  75% { transform: translateY(-6px); opacity: 1; }
+  100% { transform: translateY(0px); opacity: 1; }
 }
 
 #final-score {
