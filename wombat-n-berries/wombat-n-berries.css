@@ -1,19 +1,16 @@
 /* 게임 화면 전체 */
 .game-screen {
   width: 90vw;
-  height: calc(90vw * 4 / 3);
-  /* 600x800 비율 유지 */
+  aspect-ratio: 3 / 4;
+  /* height: calc(90vw * 4 / 3); */
   max-width: 600px;
   max-height: 800px;
 
   background-color: blanchedalmond;
   background-image: url("assets/berries-bg.png");
   background-size: cover;
-  /* 또는 contain, auto 등 */
   background-repeat: no-repeat;
-  /* 반복 방지 */
   background-position: center;
-  /* 중앙 정렬 */
 
   border: 8px solid black;
   box-sizing: border-box;
@@ -44,16 +41,20 @@
   flex-direction: column;
   align-items: center;
   gap: 5px;
-  /* 원하는 간격으로 조정 (예: 40px) */
+}
+
+.game-logo {
+  width: 65vw;
+  max-width: 450px;
+  aspect-ratio: 2 / 1; /* 높이 자동 계산 */
 }
 
 #intro-countdown-img {
   position: relative;
-  width: 400px;
-  /* 또는 원하는 고정 크기 */
-  height: 400px;
-  margin-bottom: 5px;
-  /* 버튼과의 간격 */
+  width: 60vw;
+  max-width: 400px;
+  aspect-ratio: 1 / 1; /* 높이 자동 계산 */
+  margin-bottom: 1vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -71,8 +72,8 @@
   font-weight: bold;
   font-family: 'Arial Rounded MT Bold', 'Segoe UI', sans-serif;
 
-  font-size: 50px;
-  padding: 12px 24px;
+  font-size: clamp(16px, 4vw, 50px);
+  padding: 1vh 2vw;
   border: none;
   border-radius: 10px;
   box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
@@ -94,13 +95,9 @@
 
 .intro-button:disabled {
   background-color: #f0e6d2;
-  /* 연한 갈색으로 비활성화된 느낌 */
   color: #aaa;
-  /* 텍스트 색도 연하게 */
   cursor: not-allowed;
-  /* 클릭할 수 없다는 커서 모양 */
   box-shadow: none;
-  /* 그림자 없애기 */
 }
 
 
@@ -312,14 +309,20 @@
   color: blue;
 }
 
+.result-img {
+  width: 60vw;
+  max-width: 400px;
+  aspect-ratio: 80 / 97;
+}
+
 .btn-style {
   background-color: #d2b48c;
   color: #4b3621;
   font-weight: bold;
   font-family: 'Arial Rounded MT Bold', 'Segoe UI', sans-serif;
 
-  padding: 12px 24px;
-  font-size: 20px;
+  font-size: clamp(12px, 4vw, 20px);
+  padding: 1vh 2vw;
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -336,10 +339,6 @@
   transform: scale(0.98);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
-
-
-
-
 
 
 /******* Rule Modal *******/
