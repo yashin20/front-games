@@ -15,8 +15,19 @@
     <!-- Intro Page -->
     <section id="intro" style="display:none">
       <div class="intro-container">
+        <!-- game logo image -->
+        <img src="assets/game-logo.png" class="game-logo">
         <!-- game main image -->
-        <!-- game start button -->
+        <div id="intro-countdown-img">
+          <img src="assets/wombat-main.png">
+        </div>
+
+        <div class="intro-button-container">
+          <!-- game start button -->
+          <button id="start-btn" class="intro-button">GAME START</button>
+          <!-- rule modal button -->
+          <button id="rule-btn" class="intro-button">?</button>
+        </div>
       </div>
     </section>
 
@@ -35,16 +46,8 @@
 
       <!-- game area 7X7 -->
       <div id="game-area">
-        <div class="cell"><img class="wombat-img" src="assets/wombat-10.png"></div>
         <div class="cell"></div>
         <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-
-        <div class="cell"></div>
-        <div class="cell"><img class="wombat-img" src="assets/wombat-10.png"></div>
         <div class="cell"></div>
         <div class="cell"></div>
         <div class="cell"></div>
@@ -53,7 +56,15 @@
 
         <div class="cell"></div>
         <div class="cell"></div>
-        <div class="cell"><img class="wombat-img" src="assets/wombat-10.png"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
         <div class="cell"></div>
         <div class="cell"></div>
         <div class="cell"></div>
@@ -93,10 +104,48 @@
       </div>
     </section>
 
+
     <!-- Result Page -->
     <section id="result" style="display:none">
       <div class="result-container">
 
+        <!-- 시간 종료 메시지 -->
+        <div id="time-up-message" class="time-up-message">
+          <span>시</span><span>간</span><span> </span><span>종</span><span>료</span><span>!</span>
+        </div>
+
+
+        <div id="score-container">
+          <div style="font-size: 24px; font-weight: bold;">내 점수</div>
+          <div style="font-size: 48px; font-weight: bold;"><span id="final-score">0</span>점</div>
+
+          <img src="assets/result-wombat.png" class="spin" style="width: 400px; height: auto;">
+
+          <div class="btn-container">
+            <button class="btn-style" id="retry-btn">다시 하기</button>
+            <button class="btn-style" id="share-btn">공유 하기</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- RULE MODAL -->
+    <section id="rule-modal" style="display: none;">
+      <div class="modal-overlay" id="modal-overlay"></div>
+      <div class="modal-content">
+        <h2>Game Rules</h2>
+        <p>
+          🧩 이 게임은 <strong>3매치 퍼즐 게임</strong>입니다.<br>
+          같은 웜뱃 캐릭터를 <strong>가로 또는 세로로 3개 이상</strong> 맞추면 점수를 얻을 수 있어요!<br><br>
+
+          ⏱ 제한 시간 안에 <strong>최대한 많은 조합</strong>을 만들어 <strong>고득점</strong>에 도전하세요.<br>
+          🍓 점수가 높아질수록 웜뱃은 배가 부르고 더욱더 행복해집니다!<br><br>
+
+          🐾 지금 바로 퍼즐을 맞추고 귀여운 웜뱃을 도와주세요!
+        </p>
+        <button id="close-rule-btn" class="intro-button">닫기</button>
       </div>
     </section>
 
