@@ -1,11 +1,20 @@
 /* 게임 화면 전체 */
 .game-screen {
   width: 90vw;
-  height: calc(90vw * 4 / 3); /* 600x800 비율 유지 */
+  height: calc(90vw * 4 / 3);
+  /* 600x800 비율 유지 */
   max-width: 600px;
   max-height: 800px;
 
   background-color: blanchedalmond;
+  background-image: url("assets/berries-bg.png");
+  background-size: cover;
+  /* 또는 contain, auto 등 */
+  background-repeat: no-repeat;
+  /* 반복 방지 */
+  background-position: center;
+  /* 중앙 정렬 */
+
   border: 8px solid black;
   box-sizing: border-box;
 
@@ -16,9 +25,90 @@
 
 
 /*** 1. INTRO PAGE ***/
+#intro {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: sans-serif;
+}
+
+.intro-container,
+.result-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  /* 원하는 간격으로 조정 (예: 40px) */
+}
+
+#intro-countdown-img {
+  position: relative;
+  width: 400px;
+  /* 또는 원하는 고정 크기 */
+  height: 400px;
+  margin-bottom: 5px;
+  /* 버튼과의 간격 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#intro-countdown-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.intro-button {
+  background-color: #d2b48c;
+  color: #4b3621;
+  font-weight: bold;
+  font-family: 'Arial Rounded MT Bold', 'Segoe UI', sans-serif;
+
+  font-size: 50px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.intro-button:hover {
+  background-color: #bfa078;
+  transform: translateY(-2px);
+  box-shadow: 2px 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.intro-button:active {
+  transform: translateY(0);
+  box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.intro-button:disabled {
+  background-color: #f0e6d2;
+  /* 연한 갈색으로 비활성화된 느낌 */
+  color: #aaa;
+  /* 텍스트 색도 연하게 */
+  cursor: not-allowed;
+  /* 클릭할 수 없다는 커서 모양 */
+  box-shadow: none;
+  /* 그림자 없애기 */
+}
 
 
 /*** 2. GAME PAGE ***/
+#score-board-container {
+  background-color: rgba(255, 235, 205, 0.7);
+}
+
 /*Time Gauge*/
 #time-gauge {
   width: 90%;
@@ -29,6 +119,7 @@
   overflow: hidden;
   margin: 0 auto 1vh;
 }
+
 #time-fill {
   width: 100%;
   height: 100%;
@@ -44,6 +135,7 @@
   margin: 0 auto 3vh;
   text-align: center;
 }
+
 #score {
   color: blue;
 }
@@ -51,26 +143,25 @@
 #game-area {
   width: 85vw;
   max-width: 540px;
-  aspect-ratio: 1 / 1; /* 가로:세로 1:1 */
-  background-color: white;
-  border: 3px dashed brown;
+  aspect-ratio: 1 / 1;
+  background-color: rgba(255, 235, 205, 0.7);
   position: relative;
   margin: 0 auto;
 
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(7, 1fr);  /* 혹은 auto */
+  grid-template-rows: repeat(7, 1fr);
   gap: 0.3vw;
 }
 
 .cell {
-  background-color: beige;
-  border: 1px solid gray;
+  /* background-color: beige; */
+  /* border: 1px solid gray; */
   position: relative;
-
   aspect-ratio: 1 / 1;
-}
 
+  z-index: 0;
+}
 
 /*wombat image class. cell 크기에 맞춤*/
 .wombat-img {
@@ -78,10 +169,207 @@
   height: 100%;
   object-fit: contain;
   cursor: pointer;
-
   position: absolute;
-  animation: wombat-enter 0.3s ease-out forwards;
+  z-index: 10;
+}
+
+/*selected effect*/
+.cell.selected {
+  outline: 3px solid #ff9900;
+  /* 주황색 테두리 */
+  box-shadow: 0 0 10px #ffcc66;
+  /* 부드러운 빛 효과 */
+  background-color: #ffcc66;
+  z-index: 2;
+  /* 겹칠 경우 위로 보이게 */
 }
 
 
+
+/*animation*/
+@keyframes pop-out {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+.wombat-img.pop-out {
+  animation: pop-out 0.3s forwards;
+}
+
+
+
 /*** 3. RESULT PAGE ***/
+#result {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: sans-serif;
+
+  background-color: rgba(255, 235, 205, 0.7);
+}
+
+.result-container {
+  margin-top: 5vh;
+}
+
+
+.time-up-message {
+  margin-top: 5vh;
+  font-size: 80px;
+  font-weight: bold;
+  text-align: center;
+  transform: scale(0.5);
+  opacity: 0;
+  display: inline-block;
+}
+
+.time-up-message.appear-anim {
+  animation: appearScale 0.5s ease-out forwards;
+}
+
+/* 등장 애니메이션 */
+@keyframes appearScale {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.wave {
+  display: inline-block;
+  animation: waveUp 0.8s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
+}
+
+.delay-1 {
+  animation-delay: 0.0s;
+}
+
+.delay-2 {
+  animation-delay: 0.08s;
+}
+
+.delay-3 {
+  animation-delay: 0.16s;
+}
+
+.delay-4 {
+  animation-delay: 0.24s;
+}
+
+.delay-5 {
+  animation-delay: 0.32s;
+}
+
+.delay-6 {
+  animation-delay: 0.4s;
+}
+
+@keyframes waveUp {
+  0% {
+    transform: translateY(3px);
+    opacity: 1;
+  }
+
+  25% {
+    transform: translateY(-6px);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateY(-8px);
+    opacity: 1;
+  }
+
+  75% {
+    transform: translateY(-6px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+#final-score {
+  color: blue;
+}
+
+.btn-style {
+  background-color: #d2b48c;
+  color: #4b3621;
+  font-weight: bold;
+  font-family: 'Arial Rounded MT Bold', 'Segoe UI', sans-serif;
+
+  padding: 12px 24px;
+  font-size: 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-style:hover {
+  background-color: #bfa078;
+  transform: translateY(-2px);
+}
+
+.btn-style:active {
+  transform: scale(0.98);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+
+
+/******* Rule Modal *******/
+#rule-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+  position: relative;
+  background-color: #fffaf0;
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 500px;
+  width: 80%;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  z-index: 1001;
+}
