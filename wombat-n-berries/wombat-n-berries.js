@@ -270,7 +270,8 @@ function processMatches() {
   if (matches.length === 0) return;
 
   // 🟡 점수 반영: 블록 하나당 10점
-  score += matches.length * 10;
+  // score += matches.length * 10;
+  score += addScore(matches.length);
   updateScoreDisplay();
 
   animateMatchedBlocks(matches, () => {
@@ -282,6 +283,17 @@ function processMatches() {
   });
 }
 
+function addScore(matchesLength) {
+  let multiplier = 10;
+  if (matchesLength === 4) {
+    multiplier = 15;
+  } else if (matchesLength === 5 || matchesLength === 6) {
+    multiplier = 20;
+  } else if (matchesLength >= 7) {
+    multiplier = 25;
+  }
+  return matchesLength * multiplier;
+}
 
 /**3. swap method */
 function swapBlocks(index1, index2) {
