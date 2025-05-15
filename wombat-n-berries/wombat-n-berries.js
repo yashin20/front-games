@@ -3,7 +3,7 @@ const limitTime = 45000; //45 seconds
 const boardSize = 7;
 const cells = document.querySelectorAll(".cell");
 const wombatImages = [
-  "assets/wombat-2.png",
+  "assets/wombat-7.png",
   "assets/wombat-3.png",
   "assets/wombat-6.png",
   "assets/wombat-9.png",
