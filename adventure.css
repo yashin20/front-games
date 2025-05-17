@@ -1,6 +1,6 @@
 /* 게임 화면 전체 */
 .game-screen {
-  width: 95vw;
+  width: 98vw;
   aspect-ratio: 2 / 3;
   max-width: 600px;
   max-height: 900px;
