@@ -13,7 +13,7 @@
   <div class="game-screen">
 
     <!-- Intro Page -->
-    <section id="intro">
+    <section id="intro" style="display:none">
       <div class="intro-container">
         <!-- game logo image -->
         <!-- <img src="assets/.png" class="game-logo"> -->
@@ -27,13 +27,37 @@
           <button id="start-btn" class="intro-button">GAME START</button>
           <!-- rule modal button -->
           <button id="rule-btn" class="intro-button">?</button>
-        </div>  
+        </div>
       </div>
     </section>
 
     <!-- Game Page -->
-    <section id="game" style="display:none">
-      
+    <section id="game">
+
+      <!--Monster Element-->
+      <div id="monster-gauge">
+        <div id="monster-fill"></div>
+      </div>
+      <div id="monster-img"></div>
+      <div id="attack-sequence"></div>
+
+      <!-- Player Element -->
+      <div id="player-health">
+        <div id="heart-5"></div>
+        <div id="heart-4"></div>
+        <div id="heart-3"></div>
+        <div id="heart-2"></div>
+        <div id="heart-1"></div>
+      </div>
+      <div id="player-img"></div>
+      <div id="player-button">
+        <button id="btn-red"></button>
+        <button id="btn-blue"></button>
+        <button id="btn-yellow"></button>
+        <button id="btn-green"></button>
+        <button id="btn-attack"></button>
+      </div>
+
     </section>
 
 
@@ -69,20 +93,7 @@
       <div class="modal-content">
         <h2>Game Rules</h2>
         <p>
-          🧩 이 게임은 <strong>3매치 퍼즐 게임</strong>입니다.<br>
-          같은 웜뱃 캐릭터를 <strong>가로 또는 세로로 3개 이상</strong> 맞추면 점수를 얻을 수 있어요!<br><br>
-
-          ⏱ 제한 시간 안에 <strong>최대한 많은 짝</strong>을 만들어 <strong>고득점</strong>에 도전하세요.<br>
-          🍓 점수가 높아질수록 웜뱃은 배가 부르고 더욱더 행복해집니다!<br><br>
-
-          🧮 <strong>점수는 이렇게 계산돼요!</strong><br>
-          - 3개 매치: 블록당 <strong>10점</strong><br>
-          - 4개 매치: 블록당 <strong>15점</strong><br>
-          - 5~6개 매치: 블록당 <strong>20점</strong><br>
-          - 7개 이상 매치: 블록당 <strong>25점</strong><br>
-          ➕ 사라지는 블록이 많을수록 점수도 껑충!<br><br>
-
-          🐾 지금 바로 퍼즐을 맞추고 귀여운 웜뱃을 도와주세요!
+          룰 설명문
         </p>
         <button id="close-rule-btn" class="intro-button">닫기</button>
       </div>
