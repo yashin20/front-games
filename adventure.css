@@ -1,9 +1,7 @@
 /* 게임 화면 전체 */
 .game-screen {
-  width: 90vw;
-  aspect-ratio: 3 / 4;
-  max-width: 600px;
-  max-height: 800px;
+  width: 600px;
+  height: 800px;
 
   background-color: blanchedalmond;
   /* background-image: url("assets/berries-bg.png"); */
