@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>The Torch of Eden</title>
+  <link rel="stylesheet" type="text/css" href="adventure.css">
+</head>
+<link rel="icon" sizes="200x200" href="assets/adventure-icon.png">
+
+<body>
+  <div class="game-screen">
+
+    <!-- Intro Page -->
+    <section id="intro" style="display:none">
+      <div class="intro-container">
+
+        <div class="intro-button-container">
+          <!-- game start button -->
+          <button id="start-btn">
+            <img src="assets/play-btn.png" alt="Start">
+          </button>
+          <!-- rule modal button -->
+          <button id="rule-btn">
+            <img src="assets/rule-btn.png" alt="Rule">
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Game Page -->
+    <section id="game" style="display:none">
+
+      <!--Monster Element-->
+      <div id="monster-gauge">
+        <div id="monster-fill"></div>
+      </div>
+      <div id="monster-img"></div>
+      <div id="attack-sequence"></div>
+      <div id="block-status"></div>
+
+
+      <!-- Player Element -->
+      <div id="player-health">
+        <div class="heart full" id="heart-7">
+          <img src="assets/heart-full.png">
+        </div>
+        <div class="heart full" id="heart-6">
+          <img src="assets/heart-full.png">
+        </div>
+        <div class="heart full" id="heart-5">
+          <img src="assets/heart-full.png">
+        </div>
+        <div class="heart full" id="heart-4">
+          <img src="assets/heart-full.png">
+        </div>
+        <div class="heart full" id="heart-3">
+          <img src="assets/heart-full.png">
+        </div>
+        <div class="heart full" id="heart-2">
+          <img src="assets/heart-full.png">
+        </div>
+        <div class="heart full" id="heart-1">
+          <img src="assets/heart-full.png">
+        </div>
+      </div>
+      <div id="player-img">
+        <img src="assets/eden.png">
+      </div>
+      <div id="btn-container">
+        <button class="player-btn red" id="btn-red"></button>
+        <button class="player-btn blue" id="btn-blue"></button>
+        <button class="player-btn yellow" id="btn-yellow"></button>
+        <button class="player-btn green" id="btn-green"></button>
+        <button class="player-btn att" id="btn-attack" disabled>공격</button>
+      </div>
+
+
+      <!-- 안내 문구 -->
+      <div id="announcement" class="announcement"></div>
+    </section>
+
+
+    <!-- Result Page -->
+    <section id="result" style="display:none">
+      <div class="result-container">
+
+
+        <div id="score-container">
+          <div style="font-size: clamp(12px, 2vw, 24px); font-weight: bold;">남은 체력</div>
+          <div style="font-size: clamp(24px, 4vw, 48px); font-weight: bold;"><span id="remain-health">0</span></div>
+
+          <div style="font-size: clamp(12px, 2vw, 24px); font-weight: bold;">무찌른 몬스터 수</div>
+          <div style="font-size: clamp(24px, 4vw, 48px); font-weight: bold;"><span id="clear-monster">0</span>마리</div>
+
+          <div style="font-size: clamp(12px, 2vw, 24px); font-weight: bold;">막은 공격 수</div>
+          <div style="font-size: clamp(24px, 4vw, 48px); font-weight: bold;"><span id="block-attacks">0</span>개</div>
+
+          <div style="font-size: clamp(12px, 2vw, 24px); font-weight: bold;">최종 점수</div>
+          <div style="font-size: clamp(24px, 4vw, 48px); font-weight: bold;"><span id="final-score">0</span>점</div>
+
+          <div class="result-btn-container">
+            <!-- restart button -->
+            <button id="restart-btn">
+              <img src="assets/restart-btn.png" alt="Restart">
+            </button>
+            <!-- restart button -->
+            <button id="share-btn">
+              <img src="assets/share-btn.png" alt="Share">
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- RULE MODAL -->
+    <section id="rule-modal" style="display: none;">
+      <div class="modal-overlay" id="modal-overlay"></div>
+      <div class="modal-content">
+        <h2>Game Rules</h2>
+        <div class="rule-story">
+          <h3>🌍 세계관</h3>
+          <p>
+            한때 번성했던 <strong>아르카나 대륙</strong>은 정체불명의 몬스터들에 의해 폐허로 변했습니다. 고대 문명의 유적과 신비한 유물들이 잠든 이 대륙에는 아직도 미지의 비밀이 숨겨져
+            있습니다.
+          </p>
+
+          <h3>🧒 주인공 - 에덴 (Eden)</h3>
+          <p>
+            정의감 넘치고 용감한 소년 <strong>에덴</strong>은 평화로운 마을에서 가족과 함께 살아가고 있었습니다. 그러나 몬스터의 습격으로 모든 것을 잃고, 폐허 속에서 깨어난 그는 고대 유적
+            깊은 곳에서 금색 대검과 꺼지지 않는 횃불을 발견하게 됩니다.
+          </p>
+          <p>
+            가족을 잃은 절망 속에서 <em>"복수와 구원"</em>을 결심한 에덴은, 이제 대륙 곳곳을 누비며 몬스터에 맞서 싸우고, 고대 문명의 비밀을 밝혀나갑니다.
+          </p>
+
+          <h3>🗡️ 주요 아이템</h3>
+          <ul>
+            <li><strong>금색 대검</strong>: 강력한 공격력을 가진 에덴의 주 무기</li>
+            <li><strong>꺼지지 않는 횃불</strong>: 어둠을 밝히고 몬스터의 약점을 드러내는 신비한 불꽃</li>
+          </ul>
+
+          <h3>🎮 게임 목표</h3>
+          <p>
+            각 지역을 탐험하며 몬스터와 전투를 벌이고, 스테이지를 클리어하여 아르카나 대륙을 구원하세요. 다양한 유물과 인물을 만나며 에덴은 점점 더 강해집니다. 최후의 어둠을 무찌를 수 있을까요?
+          </p>
+
+          <h3>🔥 지금, 에덴의 여정이 시작됩니다!</h3>
+          <button id="close-rule-btn" class="intro-button">닫기</button>
+        </div>
+    </section>
+
+  </div>
+  <script type="text/javascript" src="adventure.js"></script>
+</body>
+
+</html>

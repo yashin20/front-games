@@ -1,0 +1,552 @@
+@font-face {
+  font-family: 'yg-jalnan';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'yg-jalnan', sans-serif;
+}
+
+/* 게임 화면 전체 */
+.game-screen {
+  width: 95vw;
+  aspect-ratio: 2 / 3;
+  max-width: 600px;
+  max-height: 900px;
+
+  background-image: url("assets/intro.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* background-color: blanchedalmond; */
+
+  border: 1px solid black;
+  box-sizing: border-box;
+
+  position: relative;
+  padding: 0;
+  margin: 0;
+}
+
+
+/*** 1. INTRO PAGE ***/
+#intro {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: sans-serif;
+
+  background-image: url("assets/intro.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.intro-button-container {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  height: 15%;
+}
+
+#start-btn img,
+#rule-btn img {
+  height: 100%;
+  width: auto;
+  max-height: 80px;
+  display: block;
+}
+
+#start-btn,
+#rule-btn {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+#start-btn:hover,
+#rule-btn:hover {
+  opacity: 0.7;
+}
+
+
+/*2. Game Page*/
+#game {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: sans-serif;
+
+  background-image: url("assets/stage-background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+#monster-gauge {
+  position: absolute;
+  right: 3.33%; /*20px*/
+
+  width: 60%;
+  height: 2vh;
+  background-color: lightgray;
+  border: 2px solid black;
+  border-radius: 10px; /*10px*/
+  overflow: hidden;
+  margin: 0 auto 1vh;
+}
+
+#monster-fill {
+  width: 100%;
+  height: 100%;
+  background-color: red;
+  transition: width 0.1s linear;
+  border-radius: 0 10px 10px 0;
+}
+
+#monster-img {
+  position: absolute;
+  top: 4.5%;    /* 900px 기준 40px ≈ 4.5% */
+  right: 0px;
+}
+
+/* 이미지와 이펙트를 겹치게 감싸는 래퍼 */
+.monster-wrapper {
+  position: relative;
+  width: 70vw;
+  max-width: 420px;
+}
+
+/* 몬스터 이미지 스타일 */
+.monster-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* 공격 이펙트: 기본은 안 보이다가 JS로 보여줌 */
+.attack-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('assets/attack-effect.png') center/contain no-repeat;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 10;
+}
+
+
+
+
+#attack-sequence {
+  position: absolute;
+  left: 0px;
+  top: 5.56vh; /*50px*/
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.56vh; /* 5px / 900px ≈ 0.56vh */
+}
+
+.attack {
+  height: 6vw;
+  aspect-ratio: 5 / 1;
+  max-width: 30vw; /* 반응형 + 상한 제한 */
+  max-height: 4vh; /* 36px / 900px ≈ 4vh */
+  border: 0.33vh solid black; /* 3px / 900px ≈ 0.33vh */
+
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.attack.red {
+  background-color: red;
+}
+
+.attack.blue {
+  background-color: blue;
+}
+
+.attack.yellow {
+  background-color: yellow;
+}
+
+.attack.green {
+  background-color: green;
+}
+
+.attack.damage {
+  background-color: gray;
+  border-color: darkgray;
+  transition: background-color 0.3s ease;
+}
+
+@keyframes explode {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+    filter: brightness(1);
+  }
+
+  30% {
+    transform: scale(1.8) rotate(15deg);
+    opacity: 1;
+    filter: brightness(1.5);
+  }
+
+  60% {
+    transform: scale(2.5) rotate(-10deg);
+    opacity: 0.8;
+    filter: brightness(1.2);
+  }
+
+  100% {
+    transform: scale(3.5) rotate(45deg);
+    opacity: 0;
+    filter: brightness(0.5);
+  }
+}
+
+.explode {
+  animation: explode 0.6s cubic-bezier(0.3, 1.5, 0.5, 1) forwards;
+  z-index: 10;
+}
+
+
+#block-status {
+  position: absolute;
+  left: 63.33vw;
+  bottom: 12.22vh;
+}
+
+.status-message {
+  font-size: clamp(36px, 10vw, 60px);
+  font-family: 'yg-jalnan', sans-serif;
+  text-align: center;
+  color: red;
+}
+
+
+#player-img {
+  position: absolute;
+  bottom: 4.89vh; /* 80px / 900px ≈ 8.89vh */
+  left: 8.33vw;   /* 50px / 600px ≈ 8.33vw */
+}
+
+#player-img img {
+  width: 40vw;
+  max-width: 250px;
+  height: auto;
+  display: block;
+}
+
+@keyframes player-damage {
+  0% {
+    transform: translateX(0);
+    filter: brightness(1);
+  }
+
+  25% {
+    transform: translateX(-5px);
+    filter: brightness(1.5);
+  }
+
+  50% {
+    transform: translateX(5px);
+    filter: brightness(0.8);
+  }
+
+  75% {
+    transform: translateX(-5px);
+    filter: brightness(1.5);
+  }
+
+  100% {
+    transform: translateX(0);
+    filter: brightness(1);
+  }
+}
+
+.player-damage {
+  animation: player-damage 0.4s ease-in-out;
+}
+
+
+#player-health {
+  position: absolute;
+  bottom: 4.89vh;  /* 80px / 900px ≈ 8.89vh */
+  left: 1.67vw;    /* 10px / 600px ≈ 1.67vw */
+  
+  display: flex;         /* 추가 */
+  flex-direction: column;/* 세로 배치 */
+  gap: 0.6vh;           /* 예: 5px / 900px */
+}
+
+.heart {
+  display: flex;
+  align-items: center; /* 이미지 수직 정렬 */
+}
+
+.heart img {
+  width: 3vw;
+  max-width: 50px;
+  height: auto;         /* 명시해주면 좋습니다 */
+}
+
+#btn-container {
+  position: absolute;
+  bottom: 0.56vh;  /* 5px / 900px ≈ 0.56vh */
+  right: 0.83vw;   /* 5px / 600px ≈ 0.83vw */
+
+  display: flex;
+  gap: 0.17vw;     /* 1px / 600px ≈ 0.17vw */
+}
+
+.player-btn {
+  width: 10vw;
+  aspect-ratio: 1 / 1;
+  background: gray;
+  display: block;
+}
+
+.player-btn.red {
+  background-color: red;
+}
+
+.player-btn.blue {
+  background-color: blue;
+}
+
+.player-btn.green {
+  background-color: green;
+}
+
+.player-btn.yellow {
+  background-color: yellow;
+}
+
+.player-btn.att {
+  background-color: black;
+  font-size: clamp(11.2px, 3.11vw, 28px);
+  color: white;
+  font-family: 'yg-jalnan', sans-serif;
+}
+
+#btn-attack.active {
+  background-color: gold;
+  color: black;
+  font-weight: bold;
+  border: 2px solid orange;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.monster-hit {
+  animation: monsterShake 0.5s ease;
+}
+
+@keyframes monsterShake {
+  0% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-10px);
+  }
+
+  50% {
+    transform: translateX(10px);
+  }
+
+  75% {
+    transform: translateX(-10px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+
+
+
+/* 안내 문구 */
+.announcement {
+  position: absolute;  /* fixed -> absolute 변경 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 64px;
+  font-weight: bold;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+
+
+/**3. Result Page*/
+#result {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: 'yg-jalnan', sans-serif;
+
+  background-color: rgba(255, 235, 205, 0.7);
+}
+
+.result-btn-container {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  height: 15%;
+}
+
+
+#restart-btn img,
+#share-btn img {
+  height: 100%;
+  width: auto;
+  max-height: 80px;
+  display: block;
+}
+
+#restart-btn,
+#share-btn {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+#restart-btn:hover,
+#share-btn:hover {
+  opacity: 0.7;
+}
+
+
+
+
+
+
+
+/* 전체 모달 영역 */
+#rule-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  /* JS에서 display: flex로 바꿈 */
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* 반투명한 배경 */
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* 모달 안 내용 박스 */
+.modal-content {
+  position: relative;
+  z-index: 1001;
+  background-color: white;
+  padding: 30px 40px;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 400px;
+  width: 80%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  font-family: 'yg-jalnan', sans-serif;
+}
+
+/* 모달 제목 */
+.modal-content h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 24px;
+}
+
+/* 모달 설명 텍스트 */
+.modal-content p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 25px;
+}
+
+/* 닫기 버튼 */
+.modal-content #close-rule-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: 'yg-jalnan', sans-serif;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.modal-content #close-rule-btn:hover {
+  background-color: #0056b3;
+}
