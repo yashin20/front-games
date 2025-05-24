@@ -40,3 +40,8 @@ Main Page : http://www.supermaruo.shop
 ### Wombat & Berries (3-Match Puzzle Game)  
 ![image](https://github.com/user-attachments/assets/11722876-830f-41bc-98cc-fdb3fc1c857a)  
 [Wombat & Berries (3-Match Puzzle Game)](https://yashin20.github.io/front-games/wombat-n-berries/wombat-n-berries.html)  
+
+
+
+
+https://yashin20.github.io/front-games/the-torch-of-eden/adventure.html 
