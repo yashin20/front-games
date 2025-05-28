@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,18 +10,35 @@
     body {
       background-color: #f8f9fa;
     }
+
     .market-card {
       transition: transform 0.2s ease;
     }
+
     .market-card:hover {
       transform: translateY(-4px);
     }
+
     .badge-outcome {
       font-size: 0.9rem;
       padding: 0.5em 0.75em;
     }
+
+
+
+    .fixed-card-height {
+      height: 180px;
+      /* 원하는 고정 높이로 조절 가능 */
+    }
+
+    .scrollable-options {
+      overflow-y: auto;
+      max-height: 80px;
+      /* 카드 전체 높이에 따라 조절 */
+    }
   </style>
 </head>
+
 <body>
 
   <!-- Navbar -->
@@ -38,9 +56,11 @@
   <div class="container my-4">
     <h4 class="mb-4">Trending Markets</h4>
     <div class="row g-4">
+
+
       <!-- Card 1 -->
       <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="card market-card h-100 shadow-sm">
+        <div class="card market-card h-100 shadow-sm fixed-card-height">
           <div class="card-body">
             <h6 class="card-title">Will BTC be above $70k by June?</h6>
             <p class="text-muted small mb-2">Closes: June 30</p>
@@ -54,7 +74,7 @@
 
       <!-- Card 2 -->
       <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="card market-card h-100 shadow-sm">
+        <div class="card market-card h-100 shadow-sm fixed-card-height">
           <div class="card-body">
             <h6 class="card-title">Will ETH hit $4k this month?</h6>
             <p class="text-muted small mb-2">Closes: May 31</p>
@@ -66,15 +86,193 @@
         </div>
       </div>
 
-      <!-- Card 3 -->
+
       <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="card market-card h-100 shadow-sm">
+        <div class="card market-card h-100 shadow-sm fixed-card-height">
+          <div class="card-body d-flex">
+            <!-- 작은 둥근 사각형 이미지 -->
+            <img src="test-img.png" alt="BTC" class="rounded me-3"
+              style="width: 40px; height: 40px; object-fit: cover;">
+
+            <!-- 텍스트 영역 -->
+            <div class="flex-grow-1">
+              <h6 class="card-title mb-1">Will BTC be above $70k by June?</h6>
+              <p class="text-muted small mb-2">Closes: June 30</p>
+              <div class="d-flex justify-content-between">
+                <span class="badge bg-success badge-outcome">Yes: 65%</span>
+                <span class="badge bg-danger badge-outcome">No: 35%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card market-card shadow-sm fixed-card-height d-flex flex-column">
+          <div class="card-body d-flex flex-column p-3 flex-grow-1">
+
+            <!-- 헤더 -->
+            <div class="d-flex align-items-start mb-3">
+              <img src="test-img.png" alt="Kim Moon-soo" class="rounded me-2"
+                style="width: 40px; height: 40px; object-fit: cover; flex-shrink: 0;">
+              <h6 class="mb-0 flex-grow-1" style="font-size: 1rem; line-height: 1.3;">
+                Kim Moon-soo % of vote in South Korea Election?
+              </h6>
+            </div>
+
+            <!-- 선택지 리스트 (스크롤 영역) -->
+            <div class="small scrollable-options flex-grow-1 mb-2">
+              <!-- 선택지들 -->
+              <div class="d-flex justify-content-between align-items-center py-1 border-bottom">
+                <span>&lt;20%</span>
+                <span>1%</span>
+                <div>
+                  <span class="badge bg-success me-1">Yes</span>
+                  <span class="badge bg-danger">No</span>
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-between align-items-center py-1 border-bottom">
+                <span>&lt;20%</span>
+                <span>1%</span>
+                <div>
+                  <span class="badge bg-success me-1">Yes</span>
+                  <span class="badge bg-danger">No</span>
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-between align-items-center py-1 border-bottom">
+                <span>&lt;20%</span>
+                <span>1%</span>
+                <div>
+                  <span class="badge bg-success me-1">Yes</span>
+                  <span class="badge bg-danger">No</span>
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-between align-items-center py-1 border-bottom">
+                <span>&lt;20%</span>
+                <span>1%</span>
+                <div>
+                  <span class="badge bg-success me-1">Yes</span>
+                  <span class="badge bg-danger">No</span>
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-between align-items-center py-1 border-bottom">
+                <span>&lt;20%</span>
+                <span>1%</span>
+                <div>
+                  <span class="badge bg-success me-1">Yes</span>
+                  <span class="badge bg-danger">No</span>
+                </div>
+              </div>
+              <!-- 생략: 다른 선택지들도 반복 -->
+            </div>
+
+            <!-- 하단 영역 -->
+            <div class="d-flex justify-content-between align-items-center text-muted small mt-auto">
+              <span>$339k Vol.</span>
+              <div>
+                <i class="bi bi-gift me-2"></i>
+                <i class="bi bi-bookmark"></i>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card market-card shadow-sm fixed-card-height d-flex flex-column">
+          <div class="card-body d-flex">
+
+            <!-- 이미지 -->
+            <img src="test-img.png" alt="BTC" class="rounded me-3"
+              style="width: 40px; height: 40px; object-fit: cover;">
+
+            <!-- 텍스트 영역 -->
+            <div class="flex-grow-1">
+              <h6 class="card-title mb-1">Will BTC be above $70k by June?</h6>
+              <p class="text-muted small mb-2">Closes: June 30</p>
+              <div class="d-flex justify-content-between">
+                <span class="badge bg-success badge-outcome">Yes: 65%</span>
+                <span class="badge bg-danger badge-outcome">No: 35%</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card market-card shadow-sm fixed-card-height d-flex flex-column">
+          <div class="card-body d-flex">
+
+            <!-- 이미지 -->
+            <img src="test-img.png" alt="BTC" class="rounded me-3"
+              style="width: 40px; height: 40px; object-fit: cover;">
+
+            <!-- 텍스트 영역 -->
+            <div class="flex-grow-1">
+              <h6 class="card-title mb-1">Will BTC be above $70k by June?</h6>
+              <p class="text-muted small mb-2">Closes: June 30</p>
+              <div class="d-flex justify-content-between">
+                <span class="badge bg-success badge-outcome">Yes: 65%</span>
+                <span class="badge bg-danger badge-outcome">No: 35%</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Card 1 -->
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card market-card h-100 shadow-sm fixed-card-height">
           <div class="card-body">
-            <h6 class="card-title">Will Trump win the 2024 election?</h6>
-            <p class="text-muted small mb-2">Closes: Nov 5</p>
+            <h6 class="card-title">Will BTC be above $70k by June?</h6>
+            <p class="text-muted small mb-2">Closes: June 30</p>
             <div class="d-flex justify-content-between">
-              <span class="badge bg-success badge-outcome">Yes: 58%</span>
-              <span class="badge bg-danger badge-outcome">No: 42%</span>
+              <span class="badge bg-success badge-outcome">Yes: 65%</span>
+              <span class="badge bg-danger badge-outcome">No: 35%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Card 1 -->
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card market-card h-100 shadow-sm fixed-card-height">
+          <div class="card-body">
+            <h6 class="card-title">Will BTC be above $70k by June?</h6>
+            <p class="text-muted small mb-2">Closes: June 30</p>
+            <div class="d-flex justify-content-between">
+              <span class="badge bg-success badge-outcome">Yes: 65%</span>
+              <span class="badge bg-danger badge-outcome">No: 35%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Card 1 -->
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card market-card h-100 shadow-sm fixed-card-height">
+          <div class="card-body">
+            <h6 class="card-title">Will BTC be above $70k by June?</h6>
+            <p class="text-muted small mb-2">Closes: June 30</p>
+            <div class="d-flex justify-content-between">
+              <span class="badge bg-success badge-outcome">Yes: 65%</span>
+              <span class="badge bg-danger badge-outcome">No: 35%</span>
             </div>
           </div>
         </div>
@@ -85,4 +283,5 @@
   </div>
 
 </body>
+
 </html>
